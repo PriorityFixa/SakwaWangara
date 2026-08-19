@@ -297,221 +297,289 @@ button:focus-visible,
     background: var(--gold);
 }
 
-/* ================================
-   HERO IMAGE
-================================ */
+/* ================= HERO ================= */
+
+.hero {
+    min-height: calc(100vh - 80px);
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    gap: 70px;
+
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 90px 50px 100px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ================= HERO CONTENT ================= */
+
+.hero-content {
+    max-width: 650px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero .eyebrow {
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+
+    color: #a8752b;
+}
+
+
+.hero h1 {
+    margin: 0;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(52px, 6vw, 88px);
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+    font-weight: 800;
+
+    color: #171513;
+}
+
+.hero h1 span {
+    color: #b17a2c;
+}
+
+
+.hero-text {
+    max-width: 590px;
+
+    margin: 32px 0 35px;
+
+    font-size: 17px;
+    line-height: 1.75;
+
+    color: #55504a;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 30px;
+}
+
+.hero-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 54px;
+
+    padding: 0 28px;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: all .3s ease;
+}
+
+.hero-buttons .btn-primary {
+    background: #171513;
+    color: #fff;
+}
+
+.hero-buttons .btn-primary:hover {
+    background: #b17a2c;
+    transform: translateY(-2px);
+}
+
+.hero-buttons .btn-outline {
+    border: 1px solid #d9d3ca;
+    color: #171513;
+    background: transparent;
+}
+
+.hero-buttons .btn-outline:hover {
+    border-color: #171513;
+    transform: translateY(-2px);
+}
+
+
+/* ================= HERO NOTE ================= */
+
+.hero-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 13px;
+    color: #777069;
+}
+
+.hero-note span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #b17a2c;
+}
+
+
+/* ================= HERO VISUAL ================= */
+
+.hero-visual {
+    position: relative;
+
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ================= PHOTO ================= */
 
 .hero-image {
     position: relative;
-    width: 100%;
-    min-height: 620px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    width: min(100%, 520px);
+
+    z-index: 1;
 }
 
 
-/* Main photographic frame */
-
-.hero-photo-wrap {
+.hero-image-inner {
     position: relative;
-    width: min(500px, 90%);
-    height: 620px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #f4eee5 0%,
-            #eee5d8 100%
-        );
+    width: 100%;
 
-    border-radius: 24px;
+    background: #eee9e1;
 
-    overflow: visible;
+    border-radius: 22px;
+
+    padding: 22px;
 
     box-shadow:
-        0 30px 70px rgba(32, 25, 18, 0.13);
+        0 30px 70px rgba(30, 24, 18, .14);
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    overflow: hidden;
 }
 
 
-/* Soft decorative layer behind photograph */
-
-.hero-photo-bg {
-    position: absolute;
-
-    width: 88%;
-    height: 88%;
-
-    right: -25px;
-    bottom: -20px;
-
-    background: #b47c2b;
-
-    border-radius: 28px;
-
-    opacity: .12;
-
-    transform: rotate(4deg);
-
-    z-index: 0;
-}
-
-
-/* Photograph */
+/*
+   IMPORTANT:
+   contain instead of cover.
+   This prevents Sakwa's body and gestures
+   from being unnecessarily cropped.
+*/
 
 .hero-photo {
-    position: relative;
-
-    z-index: 2;
+    display: block;
 
     width: 100%;
-    height: 100%;
+    height: auto;
+
+    max-height: 620px;
 
     object-fit: contain;
 
-    object-position: center bottom;
+    object-position: center;
 
-    border-radius: 24px;
-
-    display: block;
-
-    filter:
-        contrast(1.02)
-        saturate(1.02);
-
-    transition:
-        transform .6s ease,
-        filter .6s ease;
+    border-radius: 12px;
 }
 
 
-/* Gentle hover effect */
+/* ================= DECORATIVE ACCENT ================= */
 
-.hero-photo-wrap:hover .hero-photo {
-    transform: scale(1.015);
-
-    filter:
-        contrast(1.04)
-        saturate(1.05);
-}
-
-
-/* Small photographic label */
-
-.photo-label {
+.hero-accent {
     position: absolute;
 
-    left: 24px;
-    top: 24px;
+    width: 180px;
+    height: 180px;
 
-    z-index: 4;
+    right: -55px;
+    bottom: -55px;
 
-    display: flex;
-    align-items: center;
-    gap: 9px;
+    border-radius: 50%;
 
-    padding: 9px 13px;
+    background: rgba(177, 122, 44, .10);
 
-    background: rgba(255,255,255,.92);
+    z-index: -1;
+}
 
-    border: 1px solid rgba(0,0,0,.07);
 
-    border-radius: 999px;
+/* ================= TRAINER BADGE ================= */
+
+.trainer-badge {
+    position: absolute;
+
+    left: -45px;
+    bottom: 55px;
+
+    width: 245px;
+
+    padding: 22px 24px;
+
+    background: #171513;
+
+    color: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, .18);
+
+    z-index: 3;
+}
+
+
+.trainer-badge-label {
+    display: block;
+
+    margin-bottom: 8px;
 
     font-size: 10px;
     font-weight: 700;
 
-    letter-spacing: .13em;
+    letter-spacing: 2px;
 
-    color: #6d4b1d;
-
-    backdrop-filter: blur(8px);
+    color: #c89a52;
 }
 
 
-/* Small orange indicator */
-
-.photo-label-dot {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #b47c2b;
-
-    flex-shrink: 0;
-}
-
-
-/* ================================
-   FLOATING TRAINING CARD
-================================ */
-
-.floating-card {
-
-    position: absolute;
-
-    z-index: 6;
-
-    left: -38px;
-    bottom: 45px;
-
-    width: 185px;
-
-    padding: 24px 23px;
-
-    background: #181512;
-
-    color: #fff;
-
-    border-radius: 13px;
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.22);
-
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-
-/* Card heading */
-
-.floating-label {
+.trainer-badge strong {
+    display: block;
 
     margin-bottom: 8px;
 
-    font-size: 9px;
-
-    letter-spacing: .14em;
-
-    text-transform: uppercase;
-
-    color: #b47c2b;
-
+    font-size: 21px;
     font-weight: 700;
 }
 
 
-/* Card statements */
+.trainer-badge span:last-child {
+    display: block;
 
-.floating-card strong {
+    font-size: 11px;
+    line-height: 1.5;
 
-    font-size: 15px;
-
-    font-weight: 500;
-
-    line-height: 1.35;
+    color: rgba(255,255,255,.68);
 }
-
-.floating-card strong:first-of-type {
-    color: #d7a65b;
-}
-
 
 /* ================================
    RESPONSIVE
