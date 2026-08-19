@@ -297,97 +297,290 @@ button:focus-visible,
     background: var(--gold);
 }
 
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.hero {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 90px 8vw 120px;
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.hero h1 {
-    font-size: clamp(38px, 5vw, 58px);
-    margin-bottom: 24px;
-}
-
-.hero h1 span {
-    color: var(--gold);
-}
-
-.hero-text {
-    max-width: 480px;
-    color: var(--ink-soft);
-    font-size: 16.5px;
-    margin-bottom: 36px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 26px;
-}
-
-.hero-note {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13.5px;
-    color: var(--ink-soft);
-}
-
-.hero-note span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold2);
-    flex-shrink: 0;
-}
+/* ================================
+   HERO IMAGE
+================================ */
 
 .hero-image {
     position: relative;
+    width: 100%;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.image-frame {
-    border-radius: var(--radius);
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
-    box-shadow: var(--shadow-soft);
+
+/* Main photographic frame */
+
+.hero-photo-wrap {
+    position: relative;
+    width: min(500px, 90%);
+    height: 620px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f4eee5 0%,
+            #eee5d8 100%
+        );
+
+    border-radius: 24px;
+
+    overflow: visible;
+
+    box-shadow:
+        0 30px 70px rgba(32, 25, 18, 0.13);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
-.image-frame img {
+
+/* Soft decorative layer behind photograph */
+
+.hero-photo-bg {
+    position: absolute;
+
+    width: 88%;
+    height: 88%;
+
+    right: -25px;
+    bottom: -20px;
+
+    background: #b47c2b;
+
+    border-radius: 28px;
+
+    opacity: .12;
+
+    transform: rotate(4deg);
+
+    z-index: 0;
+}
+
+
+/* Photograph */
+
+.hero-photo {
+    position: relative;
+
+    z-index: 2;
+
     width: 100%;
     height: 100%;
-    object-fit: cover;
+
+    object-fit: contain;
+
+    object-position: center bottom;
+
+    border-radius: 24px;
+
+    display: block;
+
+    filter:
+        contrast(1.02)
+        saturate(1.02);
+
+    transition:
+        transform .6s ease,
+        filter .6s ease;
 }
+
+
+/* Gentle hover effect */
+
+.hero-photo-wrap:hover .hero-photo {
+    transform: scale(1.015);
+
+    filter:
+        contrast(1.04)
+        saturate(1.05);
+}
+
+
+/* Small photographic label */
+
+.photo-label {
+    position: absolute;
+
+    left: 24px;
+    top: 24px;
+
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 9px 13px;
+
+    background: rgba(255,255,255,.92);
+
+    border: 1px solid rgba(0,0,0,.07);
+
+    border-radius: 999px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: .13em;
+
+    color: #6d4b1d;
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* Small orange indicator */
+
+.photo-label-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #b47c2b;
+
+    flex-shrink: 0;
+}
+
+
+/* ================================
+   FLOATING TRAINING CARD
+================================ */
 
 .floating-card {
+
     position: absolute;
-    left: -36px;
-    bottom: 36px;
-    background: var(--ink);
-    color: var(--cream-text);
-    padding: 22px 26px;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-card);
+
+    z-index: 6;
+
+    left: -38px;
+    bottom: 45px;
+
+    width: 185px;
+
+    padding: 24px 23px;
+
+    background: #181512;
+
+    color: #fff;
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.22);
+
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    font-size: 13.5px;
-    border: 1px solid rgba(216, 166, 76, 0.35);
+    gap: 7px;
 }
+
+
+/* Card heading */
+
+.floating-label {
+
+    margin-bottom: 8px;
+
+    font-size: 9px;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    color: #b47c2b;
+
+    font-weight: 700;
+}
+
+
+/* Card statements */
 
 .floating-card strong {
-    color: var(--gold2);
-    font-family: var(--font-display);
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    line-height: 1.35;
 }
 
+.floating-card strong:first-of-type {
+    color: #d7a65b;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+
+    .hero-image {
+        min-height: auto;
+
+        margin-top: 50px;
+    }
+
+    .hero-photo-wrap {
+
+        width: min(520px, 92%);
+
+        height: 600px;
+    }
+
+    .floating-card {
+
+        left: 0;
+
+        bottom: 25px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero-photo-wrap {
+
+        width: 100%;
+
+        height: 520px;
+
+        border-radius: 20px;
+    }
+
+    .hero-photo {
+
+        border-radius: 20px;
+    }
+
+    .photo-label {
+
+        left: 15px;
+        top: 15px;
+
+        font-size: 8px;
+    }
+
+    .floating-card {
+
+        left: 15px;
+
+        bottom: 18px;
+
+        width: 165px;
+
+        padding: 18px;
+    }
+
+    .floating-card strong {
+
+        font-size: 13px;
+    }
+}
 /* =========================================================
    ORGANISATIONS MARQUEE
    ========================================================= */
