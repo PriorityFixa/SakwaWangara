@@ -9,6 +9,23 @@
     <meta name="description"
           content="Sakwa Wangara provides professional corporate training in etiquette, customer service, interpersonal skills and workplace communication.">
 
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sakwa Wangara | Executive & Corporate Trainer">
+    <meta property="og:description"
+          content="Practical corporate training in professional etiquette, customer service, communication and interpersonal skills.">
+    <meta property="og:image" content="https://YOUR-DOMAIN.com/images/og-cover.jpg">
+    <meta property="og:url" content="https://YOUR-DOMAIN.com/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sakwa Wangara | Executive & Corporate Trainer">
+    <meta name="twitter:description"
+          content="Practical corporate training in professional etiquette, customer service, communication and interpersonal skills.">
+    <meta name="twitter:image" content="https://YOUR-DOMAIN.com/images/og-cover.jpg">
+
+    <link rel="canonical" href="https://YOUR-DOMAIN.com/">
+    <link rel="icon" href="images/favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -35,7 +52,7 @@
             </span>
         </a>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
             ☰
         </button>
 
@@ -101,8 +118,9 @@
         <div class="image-frame">
 
             <!-- Replace with Sakwa's photograph -->
-            <img src="images/chris.png"
-                 alt="Sakwa Wangara facilitating a professional training session">
+            <img src="images/sakwa-hero.jpg"
+                 alt="Sakwa Wangara facilitating a professional training session"
+                 width="600" height="700">
 
         </div>
 
@@ -117,6 +135,10 @@
 </section>
 
 <!-- ================= ORGANISATIONS TRAINED ================= -->
+<!-- FIXED: was double-nested (.organisation-marquee inside .organisation-track
+     inside another .organisation-marquee). The seamless-loop CSS animation
+     (translateX(-50%)) requires .organisation-track's DIRECT children to be
+     exactly two identical .organisation-set blocks. Flattened below. -->
 
 <section class="organisations" aria-label="Selected organisations Sakwa has trained">
 
@@ -128,83 +150,71 @@
 
         <div class="organisation-track">
 
-            <!-- FIRST SET -->
+            <!-- SET 1 (real, announced to screen readers) -->
+            <div class="organisation-set">
 
-           <div class="organisation-marquee">
+                <div class="organisation-item">
+                    <img src="images/organisations/kenya-red-cross.png"
+                         alt="Kenya Red Cross" loading="lazy" width="150" height="58">
+                </div>
 
-    <div class="organisation-track">
+                <div class="organisation-item">
+                    <img src="images/organisations/somo.png"
+                         alt="SOMO" loading="lazy" width="150" height="58">
+                </div>
 
-        <!-- TRACK 1 -->
+                <div class="organisation-item">
+                    <img src="images/organisations/kcc.png"
+                         alt="KCC" loading="lazy" width="150" height="58">
+                </div>
 
-        <div class="organisation-set">
+                <div class="organisation-item">
+                    <img src="images/organisations/karen-country-club.png"
+                         alt="Karen Country Club" loading="lazy" width="150" height="58">
+                </div>
 
-            <div class="organisation-item">
-                <img src="images/organisations/kenya-red-cross.png"
-                     alt="Kenya Red Cross">
+                <div class="organisation-item">
+                    <img src="images/organisations/helb.png"
+                         alt="HELB" loading="lazy" width="150" height="58">
+                </div>
+
             </div>
 
-            <div class="organisation-item">
-                <img src="images/organisations/somo.png"
-                     alt="SOMO">
-            </div>
+            <!-- SET 2 (exact duplicate, hidden from a11y tree, purely visual for the loop) -->
+            <div class="organisation-set" aria-hidden="true">
 
-            <div class="organisation-item">
-                <img src="images/organisations/kcc.png"
-                     alt="KCC">
-            </div>
+                <div class="organisation-item">
+                    <img src="images/organisations/kenya-red-cross.png" alt="" loading="lazy" width="150" height="58">
+                </div>
 
-            <div class="organisation-item">
-                <img src="images/organisations/karen-country-club.png"
-                     alt="Karen Country Club">
-            </div>
+                <div class="organisation-item">
+                    <img src="images/organisations/somo.png" alt="" loading="lazy" width="150" height="58">
+                </div>
 
-            <div class="organisation-item">
-                <img src="images/organisations/helb.png"
-                     alt="HELB">
-            </div>
+                <div class="organisation-item">
+                    <img src="images/organisations/kcc.png" alt="" loading="lazy" width="150" height="58">
+                </div>
 
-        </div>
+                <div class="organisation-item">
+                    <img src="images/organisations/karen-country-club.png" alt="" loading="lazy" width="150" height="58">
+                </div>
 
+                <div class="organisation-item">
+                    <img src="images/organisations/helb.png" alt="" loading="lazy" width="150" height="58">
+                </div>
 
-        <!-- TRACK 2 — EXACT COPY -->
-
-        <div class="organisation-set" aria-hidden="true">
-
-            <div class="organisation-item">
-                <img src="images/organisations/kenya-red-cross.png"
-                     alt="">
-            </div>
-
-            <div class="organisation-item">
-                <img src="images/organisations/somo.png"
-                     alt="">
-            </div>
-
-            <div class="organisation-item">
-                <img src="images/organisations/kcc.png"
-                     alt="">
-            </div>
-
-            <div class="organisation-item">
-                <img src="images/organisations/karen-country-club.png"
-                     alt="">
-            </div>
-
-            <div class="organisation-item">
-                <img src="images/organisations/helb.png"
-                     alt="">
             </div>
 
         </div>
 
     </div>
 
-</div>
     <p class="organisations-note">
         Training delivered across professional, service and institutional environments.
     </p>
 
 </section>
+
 <!-- ================= INTRO ================= -->
 
 <section class="intro section" id="about">
@@ -398,7 +408,8 @@
     <div class="program-image">
 
         <img src="images/trainer.png"
-             alt="Sakwa Wangara facilitating Etiquette 101 training">
+             alt="Sakwa Wangara facilitating Etiquette 101 training"
+             loading="lazy" width="600" height="700">
 
     </div>
 
@@ -551,6 +562,7 @@
             <img
                 src="images/traineraction2.jpg"
                 alt="Sakwa Wangara conducting a professional group training session"
+                loading="lazy" width="800" height="500"
             >
 
             <div class="gallery-overlay">
@@ -581,6 +593,7 @@
             <img
                 src="images/traineraction.jpg"
                 alt="Sakwa Wangara facilitating professional training"
+                loading="lazy" width="500" height="650"
             >
 
             <div class="side-caption">
@@ -605,8 +618,9 @@
         <div class="training-gallery-small">
 
             <img
-                src="images/corporatetrain.png"
+                src="images/corporatetrain.jpg"
                 alt="Corporate training session"
+                loading="lazy" width="500" height="400"
             >
 
             <div class="small-caption">
@@ -694,7 +708,8 @@
             Let's discuss what your organisation needs.
         </p>
 
-        <a href="mailto:YOUR_EMAIL@example.com"
+        <!-- TODO: replace with real email before launch -->
+        <a href="mailto:hello@sakwawangara.com"
            class="btn btn-primary">
             Book a Training Session
         </a>
@@ -718,8 +733,9 @@
 
         <div>
             <small>EMAIL</small>
+            <!-- TODO: replace with real email before launch -->
             <strong>
-                YOUR_EMAIL@example.com
+                hello@sakwawangara.com
             </strong>
         </div>
 
@@ -758,6 +774,7 @@
             © 2026 Sakwa Wangara. All rights reserved.
         </span>
 
+        <!-- TODO: point these at real profiles, or remove until ready -->
         <div>
             <a href="#">LinkedIn</a>
             <a href="#">Instagram</a>
