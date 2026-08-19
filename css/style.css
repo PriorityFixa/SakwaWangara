@@ -585,7 +585,210 @@ p {
     font-size: 0.78rem;
 }
 
+/* =========================================================
+   ORGANISATIONS TRAINED
+========================================================= */
 
+.organisations {
+    width: 100%;
+    padding: 34px 0 38px;
+    background: #f8f8f6;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.organisations-heading {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.organisations-heading span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #777;
+}
+
+
+/* ================= MARQUEE ================= */
+
+.organisation-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* Fading edges */
+
+.organisation-marquee::before,
+.organisation-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.organisation-marquee::before {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        #f8f8f6,
+        transparent
+    );
+}
+
+.organisation-marquee::after {
+    right: 0;
+    background: linear-gradient(
+        to left,
+        #f8f8f6,
+        transparent
+    );
+}
+
+
+/* ================= MOVING TRACK ================= */
+
+.organisation-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+
+    animation: organisationScroll 30s linear infinite;
+}
+
+
+/* ================= LOGO ITEM ================= */
+
+.organisation-item {
+    width: 190px;
+    height: 75px;
+
+    margin: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+
+/* ================= LOGOS ================= */
+
+.organisation-item img {
+    max-width: 155px;
+    max-height: 58px;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    filter: grayscale(100%);
+    opacity: 0.65;
+
+    transition:
+        filter 0.3s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Hover effect */
+
+.organisation-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+/* ================= CONTINUOUS ANIMATION ================= */
+
+@keyframes organisationScroll {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* Pause scrolling when hovered */
+
+.organisation-marquee:hover .organisation-track {
+    animation-play-state: paused;
+}
+
+
+/* ================= DESCRIPTION ================= */
+
+.organisations-note {
+    margin: 20px 20px 0;
+
+    text-align: center;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    color: #888;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    .organisations {
+        padding: 28px 0 32px;
+    }
+
+    .organisations-heading {
+        margin-bottom: 18px;
+    }
+
+    .organisation-item {
+        width: 145px;
+        height: 60px;
+        margin: 0 18px;
+    }
+
+    .organisation-item img {
+        max-width: 120px;
+        max-height: 45px;
+    }
+
+    .organisation-track {
+        animation-duration: 24s;
+    }
+
+    .organisation-marquee::before,
+    .organisation-marquee::after {
+        width: 60px;
+    }
+
+}
+
+
+/* ================= ACCESSIBILITY ================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .organisation-track {
+        animation: none;
+    }
+
+}
 /* =========================
    5. INTRO / ABOUT
    ========================= */
