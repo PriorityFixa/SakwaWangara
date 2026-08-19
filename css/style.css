@@ -593,7 +593,144 @@ button:focus-visible,
         margin-top: 50px;
     }
 }
+/* =========================================
+   CONTINUOUS ORGANISATION MARQUEE
+   (paired with the flattened HTML structure:
+   .organisation-marquee > .organisation-track >
+   two .organisation-set children, no nesting)
+========================================= */
 
+.organisation-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Moving container */
+.organisation-track {
+    display: flex;
+    width: max-content;
+    flex-shrink: 0;
+    animation: organisationLoop 18s linear infinite;
+    will-change: transform;
+}
+
+/* Each set MUST be identical in width — exactly 2 sets as direct children */
+.organisation-set {
+    display: flex;
+    flex-shrink: 0;
+}
+
+/* Individual logo */
+.organisation-item {
+    width: 220px;
+    height: 90px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 35px;
+    position: relative;
+}
+
+/* Logos */
+.organisation-item img {
+    display: block;
+    max-width: 150px;
+    max-height: 58px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: .72;
+    filter: grayscale(100%);
+    transition:
+        opacity .3s ease,
+        filter .3s ease,
+        transform .3s ease;
+}
+
+.organisation-item:hover img {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Separator */
+.organisation-item::after {
+    content: "✦";
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px;
+    color: var(--gold2);
+    opacity: .7;
+}
+
+/* =========================================
+   TRUE SEAMLESS LOOP
+   translateX(-50%) works because the track's
+   width is exactly 2x one .organisation-set,
+   so shifting by half brings set 2 to where
+   set 1 started, with no visible seam.
+========================================= */
+@keyframes organisationLoop {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause on hover so people can actually read a logo */
+.organisation-marquee:hover .organisation-track {
+    animation-play-state: paused;
+}
+
+/* Respect reduced-motion preference — stop the infinite scroll */
+@media (prefers-reduced-motion: reduce) {
+    .organisation-track {
+        animation: none;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 900px) {
+    .organisation-track {
+        animation-duration: 14s; /* shorter track, so speed it up slightly */
+    }
+
+    .organisation-item {
+        width: 190px;
+        height: 80px;
+        padding: 12px 25px;
+    }
+
+    .organisation-item img {
+        max-width: 130px;
+        max-height: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    .organisation-track {
+        animation-duration: 12s;
+    }
+
+    .organisation-item {
+        width: 160px;
+        height: 70px;
+        padding: 10px 20px;
+    }
+
+    .organisation-item img {
+        max-width: 115px;
+        max-height: 45px;
+    }
+}
 /* =========================================================
    INTRO / ABOUT
    ========================================================= */
