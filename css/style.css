@@ -98,7 +98,7 @@ button:focus-visible,
    ========================================================= */
 
 .section {
-    padding: 110px 8vw;
+    padding: 70px 8vw;
     max-width: var(--container);
     margin: 0 auto;
 }
