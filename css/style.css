@@ -8,7 +8,7 @@
     --ink:        #17140F;
     --ink-soft:   #33291D;
     --paper:      #FAF6EF;
-    --paper-dim:  #F0E9DC;
+    --paper-dim:  #E9DCC0;
     --paper-line: rgba(23, 20, 15, 0.12);
     --gold:       #A97A34;
     --gold2:      #D8A64C;
@@ -415,8 +415,12 @@ button:focus-visible,
 
 .organisation-marquee {
     width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .organisation-track {
@@ -617,7 +621,6 @@ button:focus-visible,
     padding: 60px;
     max-width: var(--container);
     margin: 40px auto;
-    width: calc(100% - 16vw);
 }
 
 .program-image {
@@ -764,7 +767,7 @@ button:focus-visible,
     position: relative;
     border-radius: var(--radius);
     overflow: hidden;
-    aspect-ratio: 21 / 9;
+    aspect-ratio: 16 / 9;
 }
 
 .training-gallery img {
@@ -1036,7 +1039,7 @@ footer > p {
     .program {
         grid-template-columns: 1fr;
         padding: 40px;
-        width: calc(100% - 12vw);
+        max-width: calc(100% - 12vw);
     }
 
     .approach-grid {
