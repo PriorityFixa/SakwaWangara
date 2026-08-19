@@ -604,13 +604,17 @@ button:focus-visible,
     background: var(--paper);
 }
 
-.organisations-heading {
+/*.organisations-heading {
     max-width: var(--container);
     margin: 0 auto 30px;
     padding: 0 8vw;
     text-align: center;
+}*/
+.organisations-heading {
+    width: min(var(--container), calc(100% - 16vw));
+    margin: 0 auto 30px;
+    text-align: center;
 }
-
 .organisations-heading span {
     font-family: var(--font-display);
     font-size: 12px;
@@ -620,12 +624,17 @@ button:focus-visible,
 }
 
 /* Visible window */
-.organisation-marquee {
+/*.organisation-marquee {
     width: 100%;
     overflow: hidden;
     position: relative;
+}*/
+.organisation-marquee {
+    width: min(var(--container), calc(100% - 16vw));
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
 }
-
 /* The two identical sets move together */
 .organisation-track {
     display: flex;
@@ -726,7 +735,7 @@ button:focus-visible,
    ORGANISATION NOTE
    ========================================================= */
 
-.organisations-note {
+/*.organisations-note {
     max-width: 600px;
 
     margin: 28px auto 0;
@@ -734,6 +743,13 @@ button:focus-visible,
 
     text-align: center;
 
+    font-size: 13px;
+    color: var(--ink-soft);
+}*/
+.organisations-note {
+    width: min(600px, calc(100% - 16vw));
+    margin: 28px auto 0;
+    text-align: center;
     font-size: 13px;
     color: var(--ink-soft);
 }
