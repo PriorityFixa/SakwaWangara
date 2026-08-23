@@ -39,6 +39,25 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- Logo sizing (add to css/style.css instead if you prefer keeping all styles centralized) -->
+    <style>
+        .brand-logo {
+            height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        footer .brand-logo {
+            height: 48px;
+        }
+
+        @media (max-width: 640px) {
+            .brand-logo {
+                height: 34px;
+            }
+        }
+    </style>
+
 </head>
 
 
@@ -55,9 +74,10 @@
 
         <a href="#home" class="brand">
 
-            <span class="brand-mark">
-                SW
-            </span>
+            <img
+                src="images/logo.png"
+                alt="Sakwa Wangara logo"
+                class="brand-logo">
 
             <span>
                 <strong>Sakwa Wangara</strong>
@@ -1345,9 +1365,10 @@
     <div class="footer-brand">
 
 
-        <span class="brand-mark">
-            SW
-        </span>
+        <img
+            src="images/logo.png"
+            alt="Sakwa Wangara logo"
+            class="brand-logo">
 
 
         <div>
