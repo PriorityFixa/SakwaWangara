@@ -1,30 +1,44 @@
 /* =========================================================
    SAKWA WANGARA — SITE STYLESHEET
-   Fonts: Manrope (display) + DM Sans (body), loaded via <head>
-   Palette: warm charcoal ink + brass/gold accent
+   Fonts: Manrope (display) + DM Sans (body)
+   Style: Executive / Corporate / African Contemporary
+   Palette: Warm charcoal + brass gold + warm paper
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT VARIABLES
    ========================================================= */
 
 :root {
     --ink:        #17140F;
     --ink-soft:   #33291D;
+
     --paper:      #FAF6EF;
     --paper-dim:  #E9DCC0;
     --paper-line: rgba(23, 20, 15, 0.12);
+
     --gold:       #A97A34;
     --gold2:      #D8A64C;
     --gold-soft:  rgba(169, 122, 52, 0.14);
+
     --cream-text: #FAF6EF;
 
     --font-display: 'Manrope', 'Segoe UI', sans-serif;
     --font-body:    'DM Sans', 'Segoe UI', sans-serif;
 
     --container: 1200px;
-    --radius: 14px;
+
+    --radius:    14px;
     --radius-sm: 8px;
 
-    --shadow-soft: 0 20px 50px -25px rgba(23, 20, 15, 0.35);
-    --shadow-card: 0 12px 30px -18px rgba(23, 20, 15, 0.3);
+    --shadow-soft:
+        0 20px 50px -25px rgba(23, 20, 15, 0.35);
+
+    --shadow-card:
+        0 12px 30px -18px rgba(23, 20, 15, 0.30);
 }
+
 
 /* =========================================================
    RESET & BASE
@@ -43,29 +57,162 @@ html {
 }
 
 body {
+    position: relative;
+
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.65;
+
     color: var(--ink);
     background: var(--paper);
+
     -webkit-font-smoothing: antialiased;
+
+    overflow-x: hidden;
 }
+
+
+/* =========================================================
+   SUBTLE AFRICAN GEOMETRIC SIDE PATTERN
+   ---------------------------------------------------------
+   Modern interpretation of African geometric textile motifs.
+   Very low opacity so it feels premium rather than decorative.
+   ========================================================= */
+
+body::before,
+body::after {
+    content: "";
+
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+
+    width: 74px;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    opacity: 0.16;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 42%,
+            rgba(169, 122, 52, 0.30) 43%,
+            rgba(169, 122, 52, 0.30) 48%,
+            transparent 49%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 42%,
+            rgba(169, 122, 52, 0.30) 43%,
+            rgba(169, 122, 52, 0.30) 48%,
+            transparent 49%
+        );
+
+    background-size:
+        36px 36px,
+        36px 36px;
+
+    background-position:
+        0 0,
+        18px 18px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+}
+
+
+/* LEFT SIDE */
+
+body::before {
+    left: 0;
+}
+
+
+/* RIGHT SIDE */
+
+body::after {
+    right: 0;
+}
+
+
+/* =========================================================
+   VERY SUBTLE GEOMETRIC TEXTURE
+   ---------------------------------------------------------
+   Used behind the overall page.
+   ========================================================= */
+
+body {
+    background-color: var(--paper);
+
+    background-image:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(169, 122, 52, 0.035) 0,
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(169, 122, 52, 0.035) 0,
+            transparent 28%
+        );
+}
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
 
 img {
     display: block;
     max-width: 100%;
 }
 
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
 a {
     color: inherit;
     text-decoration: none;
 }
 
-ul, ol {
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+ul,
+ol {
     list-style: none;
 }
 
-h1, h2, h3, h4 {
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-display);
     font-weight: 700;
     line-height: 1.1;
@@ -73,7 +220,11 @@ h1, h2, h3, h4 {
     letter-spacing: -0.01em;
 }
 
-/* Visible keyboard focus everywhere */
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
 a:focus-visible,
 button:focus-visible,
 .btn:focus-visible {
@@ -82,7 +233,13 @@ button:focus-visible,
     border-radius: 4px;
 }
 
-/*@media (prefers-reduced-motion: reduce) {
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -93,113 +250,182 @@ button:focus-visible,
     }
 }
 
+
 /* =========================================================
    SHARED UTILITIES
    ========================================================= */
 
 .section {
+    position: relative;
+
     padding: 50px 8vw;
+
     max-width: var(--container);
+
     margin: 0 auto;
+
+    z-index: 1;
 }
+
 
 .eyebrow {
     display: inline-block;
+
     font-family: var(--font-display);
+
     font-size: 12px;
     font-weight: 700;
+
     letter-spacing: 0.14em;
     text-transform: uppercase;
+
     color: var(--gold);
+
     margin-bottom: 18px;
 }
 
+
 .section-label {
     font-family: var(--font-display);
+
     font-size: 13px;
     font-weight: 700;
+
     letter-spacing: 0.14em;
     text-transform: uppercase;
+
     color: var(--gold);
+
     margin-bottom: 32px;
 }
 
+
 .section-heading {
     display: flex;
+
     justify-content: space-between;
     align-items: flex-end;
+
     gap: 48px;
+
     margin-bottom: 64px;
 }
 
+
 .section-heading h2 {
     font-size: clamp(32px, 4vw, 46px);
+
     margin-top: 6px;
 }
+
 
 .section-heading h2 span {
     color: var(--gold);
 }
 
+
 .section-heading > p {
     max-width: 340px;
+
     color: var(--ink-soft);
+
     font-size: 15px;
 }
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 .btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
     gap: 8px;
+
     padding: 15px 30px;
+
     border-radius: 999px;
+
     font-family: var(--font-display);
+
     font-weight: 600;
     font-size: 14.5px;
+
     letter-spacing: 0.01em;
-    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+
     border: 1.5px solid transparent;
+
     cursor: pointer;
 }
 
+
 .btn-primary {
     background: var(--ink);
+
     color: var(--cream-text);
 }
 
+
 .btn-primary:hover {
     background: var(--gold);
+
     transform: translateY(-2px);
 }
+
 
 .btn-outline {
     background: transparent;
+
     border-color: var(--paper-line);
+
     color: var(--ink);
 }
+
 
 .btn-outline:hover {
     border-color: var(--gold);
+
     color: var(--gold);
+
     transform: translateY(-2px);
 }
 
+
 .text-link {
     display: inline-block;
+
     margin-top: 28px;
+
     font-family: var(--font-display);
+
     font-weight: 600;
     font-size: 15px;
+
     color: var(--ink);
+
     border-bottom: 1.5px solid var(--gold);
+
     padding-bottom: 3px;
-    transition: color 0.2s ease, border-color 0.2s ease;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
+
 
 .text-link:hover {
     color: var(--gold);
 }
+
 
 /* =========================================================
    HEADER / NAV
@@ -207,121 +433,231 @@ button:focus-visible,
 
 .site-header {
     position: sticky;
+
     top: 0;
+
     z-index: 100;
-    background: rgba(250, 246, 239, 0.9);
+
+    background: rgba(250, 246, 239, 0.90);
+
     backdrop-filter: blur(10px);
+
     border-bottom: 1px solid var(--paper-line);
 }
 
+
 .navbar {
     max-width: var(--container);
+
     margin: 0 auto;
+
     padding: 18px 8vw;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
+
 .brand {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 }
 
+
 .brand-mark {
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     width: 42px;
     height: 42px;
+
     border-radius: 50%;
+
     background: var(--ink);
+
     color: var(--gold2);
+
     font-family: var(--font-display);
+
     font-weight: 700;
+
     font-size: 14px;
 }
+
 
 .brand strong {
     display: block;
+
     font-family: var(--font-display);
+
     font-size: 15px;
+
     font-weight: 700;
 }
 
+
 .brand small {
     display: block;
+
     font-size: 11.5px;
+
     color: var(--ink-soft);
+
     letter-spacing: 0.03em;
 }
 
+
 .menu-toggle {
     display: none;
+
     background: none;
+
     border: 1px solid var(--paper-line);
+
     border-radius: 8px;
+
     width: 40px;
     height: 40px;
+
     font-size: 18px;
+
     cursor: pointer;
 }
 
+
 .nav-links {
     display: flex;
+
     align-items: center;
+
     gap: 34px;
+
     font-family: var(--font-display);
+
     font-weight: 600;
+
     font-size: 14px;
 }
 
+
 .nav-links a {
     color: var(--ink-soft);
+
     transition: color 0.2s ease;
 }
+
 
 .nav-links a:hover {
     color: var(--gold);
 }
 
+
 .nav-cta {
     padding: 10px 20px;
+
     border-radius: 999px;
+
     background: var(--ink);
+
     color: var(--cream-text) !important;
 }
+
 
 .nav-cta:hover {
     background: var(--gold);
 }
 
-/* ================= HERO ================= */
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero {
     min-height: calc(100vh - 80px);
+
     display: grid;
+
     grid-template-columns: 1fr 0.9fr;
+
     align-items: center;
+
     gap: 70px;
 
     max-width: 1280px;
+
     margin: 0 auto;
-    padding: 50px 50px 50px;
+
+    padding: 50px;
 
     position: relative;
+
     overflow: hidden;
+
+    z-index: 1;
 }
 
 
-/* ================= HERO CONTENT ================= */
+/* =========================================================
+   HERO AFRICAN GEOMETRIC DETAIL
+   ========================================================= */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    left: -25px;
+    top: 12%;
+
+    width: 150px;
+    height: 150px;
+
+    opacity: 0.10;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 46%,
+            var(--gold) 47%,
+            var(--gold) 53%,
+            transparent 54%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 46%,
+            var(--gold) 47%,
+            var(--gold) 53%,
+            transparent 54%
+        );
+
+    background-size: 30px 30px;
+
+    transform: rotate(45deg);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
 
 .hero-content {
     max-width: 650px;
+
     position: relative;
+
     z-index: 2;
 }
+
 
 .hero .eyebrow {
     display: inline-block;
@@ -329,7 +665,9 @@ button:focus-visible,
     margin-bottom: 25px;
 
     font-size: 12px;
+
     font-weight: 700;
+
     letter-spacing: 2.5px;
 
     color: #a8752b;
@@ -342,13 +680,16 @@ button:focus-visible,
     font-family: "Manrope", sans-serif;
 
     font-size: clamp(52px, 6vw, 88px);
+
     line-height: 0.98;
 
     letter-spacing: -3px;
+
     font-weight: 800;
 
     color: #171513;
 }
+
 
 .hero h1 span {
     color: #b17a2c;
@@ -361,24 +702,31 @@ button:focus-visible,
     margin: 32px 0 35px;
 
     font-size: 17px;
+
     line-height: 1.75;
 
     color: #55504a;
 }
 
 
-/* ================= BUTTONS ================= */
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
 
 .hero-buttons {
     display: flex;
+
     align-items: center;
+
     gap: 14px;
 
     margin-bottom: 30px;
 }
 
+
 .hero-buttons .btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
@@ -389,6 +737,7 @@ button:focus-visible,
     border-radius: 999px;
 
     font-size: 14px;
+
     font-weight: 700;
 
     text-decoration: none;
@@ -396,38 +745,53 @@ button:focus-visible,
     transition: all .3s ease;
 }
 
+
 .hero-buttons .btn-primary {
     background: #171513;
+
     color: #fff;
 }
 
+
 .hero-buttons .btn-primary:hover {
     background: #b17a2c;
+
     transform: translateY(-2px);
 }
+
 
 .hero-buttons .btn-outline {
     border: 1px solid #d9d3ca;
+
     color: #171513;
+
     background: transparent;
 }
 
+
 .hero-buttons .btn-outline:hover {
     border-color: #171513;
+
     transform: translateY(-2px);
 }
 
 
-/* ================= HERO NOTE ================= */
+/* =========================================================
+   HERO NOTE
+   ========================================================= */
 
 .hero-note {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
     font-size: 13px;
+
     color: #777069;
 }
+
 
 .hero-note span {
     width: 8px;
@@ -439,7 +803,9 @@ button:focus-visible,
 }
 
 
-/* ================= HERO VISUAL ================= */
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
 
 .hero-visual {
     position: relative;
@@ -447,12 +813,16 @@ button:focus-visible,
     min-height: 620px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
 
-/* ================= PHOTO ================= */
+/* =========================================================
+   HERO PHOTO
+   ========================================================= */
 
 .hero-image {
     position: relative;
@@ -481,17 +851,11 @@ button:focus-visible,
 }
 
 
-/*
-   IMPORTANT:
-   contain instead of cover.
-   This prevents Sakwa's body and gestures
-   from being unnecessarily cropped.
-*/
-
 .hero-photo {
     display: block;
 
     width: 100%;
+
     height: auto;
 
     max-height: 620px;
@@ -504,7 +868,67 @@ button:focus-visible,
 }
 
 
-/* ================= DECORATIVE ACCENT ================= */
+/* =========================================================
+   HERO IMAGE AFRICAN FRAME
+   ========================================================= */
+
+.hero-image-inner::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 10px;
+
+    border: 1px solid rgba(169, 122, 52, 0.18);
+
+    border-radius: 16px;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.hero-image-inner::after {
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    right: 8px;
+    top: 8px;
+
+    opacity: 0.20;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        );
+
+    background-size: 18px 18px;
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   HERO ACCENT
+   ========================================================= */
 
 .hero-accent {
     position: absolute;
@@ -523,7 +947,9 @@ button:focus-visible,
 }
 
 
-/* ================= TRAINER BADGE ================= */
+/* =========================================================
+   TRAINER BADGE
+   ========================================================= */
 
 .trainer-badge {
     position: absolute;
@@ -554,6 +980,7 @@ button:focus-visible,
     margin-bottom: 8px;
 
     font-size: 10px;
+
     font-weight: 700;
 
     letter-spacing: 2px;
@@ -568,6 +995,7 @@ button:focus-visible,
     margin-bottom: 8px;
 
     font-size: 21px;
+
     font-weight: 700;
 }
 
@@ -576,92 +1004,142 @@ button:focus-visible,
     display: block;
 
     font-size: 11px;
+
     line-height: 1.5;
 
     color: rgba(255,255,255,.68);
 }
 
-/* ================================
-   RESPONSIVE
-================================ */
 
-@media (max-width: 900px) {
-
-    .hero-image {
-        min-height: auto;
-
-        margin-top: 50px;
-    }
-}
 /* =========================================================
-   ORGANISATIONS — CONTINUOUS INFINITE MARQUEE
+   ORGANISATIONS
+   CONTINUOUS INFINITE MARQUEE
    ========================================================= */
 
 .organisations {
     width: 100%;
+
     overflow: hidden;
+
     padding: 30px 0;
+
     background: var(--paper);
+
+    position: relative;
+
+    z-index: 1;
 }
 
-/*.organisations-heading {
-    max-width: var(--container);
-    margin: 0 auto 30px;
-    padding: 0 8vw;
-    text-align: center;
-}*/
+
+/* subtle geometric top/bottom line */
+
+.organisations::before,
+.organisations::after {
+    content: "";
+
+    display: block;
+
+    width: 100%;
+
+    height: 1px;
+
+    opacity: 0.35;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+
 .organisations-heading {
-    width: min(var(--container), calc(100% - 16vw));
-    margin: 0 auto 30px;
+    width: min(
+        var(--container),
+        calc(100% - 16vw)
+    );
+
+    margin: 30px auto;
+
     text-align: center;
 }
+
+
 .organisations-heading span {
     font-family: var(--font-display);
+
     font-size: 12px;
+
     font-weight: 700;
+
     letter-spacing: 0.14em;
+
     color: var(--gold);
 }
 
-/* Visible window */
-/*.organisation-marquee {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-}*/
+
+/* =========================================================
+   MARQUEE WINDOW
+   ========================================================= */
+
 .organisation-marquee {
-    width: min(var(--container), calc(100% - 16vw));
+    width: min(
+        var(--container),
+        calc(100% - 16vw)
+    );
+
     margin: 0 auto;
+
     overflow: hidden;
+
     position: relative;
 }
-/* The two identical sets move together */
+
+
 .organisation-track {
     display: flex;
+
     width: max-content;
+
     flex-wrap: nowrap;
-    animation: organisationLoop 20s linear infinite;
+
+    animation:
+        organisationLoop 20s linear infinite;
+
     will-change: transform;
 }
 
-/* Each complete group of logos */
+
 .organisation-set {
     display: flex;
+
     flex-direction: row;
+
     flex-wrap: nowrap;
+
     flex-shrink: 0;
+
     width: max-content;
 }
 
-/* Individual logo box */
+
+/* =========================================================
+   ORGANISATION ITEM
+   ========================================================= */
+
 .organisation-item {
     width: 220px;
+
     height: 90px;
 
     flex: 0 0 220px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     padding: 15px 35px;
@@ -669,19 +1147,22 @@ button:focus-visible,
     position: relative;
 }
 
-/* Organisation logo */
+
 .organisation-item img {
     display: block;
 
     width: auto;
+
     height: auto;
 
     max-width: 150px;
+
     max-height: 58px;
 
     object-fit: contain;
 
     opacity: 0.72;
+
     filter: grayscale(100%);
 
     transition:
@@ -690,26 +1171,36 @@ button:focus-visible,
         transform 0.3s ease;
 }
 
+
 .organisation-item:hover img {
     opacity: 1;
+
     filter: grayscale(0%);
+
     transform: scale(1.05);
 }
 
-/* Small separator */
+
+/* separator */
+
 .organisation-item::after {
     content: "✦";
 
     position: absolute;
+
     right: -2px;
+
     top: 50%;
 
     transform: translateY(-50%);
 
     font-size: 9px;
+
     color: var(--gold2);
+
     opacity: 0.7;
 }
+
 
 /* =========================================================
    INFINITE LOOP
@@ -726,102 +1217,66 @@ button:focus-visible,
     }
 }
 
-/* Pause when the user hovers over the logos */
+
 .organisation-marquee:hover .organisation-track {
     animation-play-state: paused;
 }
+
 
 /* =========================================================
    ORGANISATION NOTE
    ========================================================= */
 
-/*.organisations-note {
-    max-width: 600px;
-
-    margin: 28px auto 0;
-    padding: 0 6vw;
-
-    text-align: center;
-
-    font-size: 13px;
-    color: var(--ink-soft);
-}*/
 .organisations-note {
-    width: min(600px, calc(100% - 16vw));
+    width: min(
+        600px,
+        calc(100% - 16vw)
+    );
+
     margin: 28px auto 0;
+
     text-align: center;
+
     font-size: 13px;
+
     color: var(--ink-soft);
 }
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
-@media (max-width: 900px) {
-
-    .organisation-track {
-        animation-duration: 16s;
-    }
-
-    .organisation-item {
-        width: 190px;
-        flex-basis: 190px;
-        height: 80px;
-        padding: 12px 25px;
-    }
-
-    .organisation-item img {
-        max-width: 130px;
-        max-height: 50px;
-    }
-}
-
-@media (max-width: 600px) {
-
-    .organisations {
-        padding: 55px 0;
-    }
-
-    .organisation-track {
-        animation-duration: 13s;
-    }
-
-    .organisation-item {
-        width: 160px;
-        flex-basis: 160px;
-        height: 70px;
-        padding: 10px 20px;
-    }
-
-    .organisation-item img {
-        max-width: 115px;
-        max-height: 45px;
-    }
-}
 /* =========================================================
    INTRO / ABOUT
    ========================================================= */
 
 .intro-grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 60px;
 }
 
+
 .large-text {
     font-family: var(--font-display);
+
     font-size: clamp(24px, 2.6vw, 32px);
+
     font-weight: 600;
+
     line-height: 1.35;
+
     color: var(--ink);
 }
 
+
 .intro-copy p {
     color: var(--ink-soft);
+
     margin-bottom: 18px;
+
     font-size: 15.5px;
 }
+
 
 /* =========================================================
    SERVICES
@@ -829,153 +1284,325 @@ button:focus-visible,
 
 .service-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 24px;
 }
 
+
 .service-card {
     position: relative;
+
     background: #fff;
+
     border: 1px solid var(--paper-line);
+
     border-radius: var(--radius);
+
     padding: 34px 28px;
+
     overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
+
+
+/* subtle African geometric corner */
+
+.service-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: -20px;
+    bottom: -20px;
+
+    width: 85px;
+    height: 85px;
+
+    opacity: 0.08;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        );
+
+    background-size: 20px 20px;
+
+    transform: rotate(45deg);
+
+    pointer-events: none;
+}
+
 
 .service-card:hover {
     transform: translateY(-4px);
+
     box-shadow: var(--shadow-card);
+
     border-color: var(--gold-soft);
 }
 
+
 .service-card.featured {
     background: var(--ink);
+
     border-color: var(--ink);
+
     color: var(--cream-text);
 }
+
 
 .service-card.featured h3,
 .service-card.featured a {
     color: var(--cream-text);
 }
 
+
 .service-card.featured p {
     color: rgba(250, 246, 239, 0.72);
 }
 
+
 .service-number {
     position: absolute;
+
     top: 10px;
     right: 18px;
+
     font-family: var(--font-display);
+
     font-size: 52px;
+
     font-weight: 800;
+
     color: var(--paper-dim);
+
     line-height: 1;
+
     z-index: 0;
 }
+
 
 .service-card.featured .service-number {
     color: rgba(250, 246, 239, 0.08);
 }
 
+
 .service-icon {
-    display: none; /* numeral already communicated via .service-number; avoid duplicate marker */
+    display: none;
 }
+
 
 .service-card h3 {
     position: relative;
+
     font-size: 21px;
+
     margin-bottom: 14px;
+
     z-index: 1;
 }
+
 
 .service-card p {
     position: relative;
+
     font-size: 14.5px;
+
     color: var(--ink-soft);
+
     margin-bottom: 22px;
+
     z-index: 1;
 }
 
+
 .service-card > a {
     position: relative;
+
     font-family: var(--font-display);
+
     font-weight: 600;
+
     font-size: 14px;
+
     color: var(--gold);
+
     z-index: 1;
 }
+
 
 /* =========================================================
    FEATURED PROGRAM
    ========================================================= */
 
 .program {
+    position: relative;
+
     display: grid;
+
     grid-template-columns: 0.9fr 1.1fr;
+
     gap: 60px;
+
     align-items: center;
+
     background: var(--paper-dim);
+
     border-radius: 24px;
+
     padding: 60px;
+
     max-width: var(--container);
+
     margin: 40px auto;
+
+    overflow: hidden;
 }
+
+
+/* African pattern in program background */
+
+.program::after {
+    content: "";
+
+    position: absolute;
+
+    right: -30px;
+    bottom: -30px;
+
+    width: 190px;
+    height: 190px;
+
+    opacity: 0.07;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        );
+
+    background-size: 32px 32px;
+
+    pointer-events: none;
+}
+
 
 .program-image {
     border-radius: var(--radius);
+
     overflow: hidden;
+
     aspect-ratio: 4 / 5;
+
     box-shadow: var(--shadow-card);
+
+    position: relative;
+
+    z-index: 1;
 }
+
 
 .program-image img {
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
 }
 
+
+.program-content {
+    position: relative;
+
+    z-index: 1;
+}
+
+
 .program-content h2 {
     font-size: clamp(28px, 3.4vw, 40px);
+
     margin: 10px 0 20px;
 }
+
 
 .program-content h2 span {
     color: var(--gold);
 }
 
+
 .program-content > p {
     color: var(--ink-soft);
+
     font-size: 15.5px;
+
     max-width: 460px;
+
     margin-bottom: 34px;
 }
 
+
 .program-points {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 16px 24px;
+
     margin-bottom: 38px;
 }
 
+
 .program-points > div {
     display: flex;
+
     align-items: baseline;
+
     gap: 10px;
 }
 
+
 .program-points strong {
     font-family: var(--font-display);
+
     color: var(--gold);
+
     font-size: 14px;
 }
 
+
 .program-points span {
     font-size: 14.5px;
+
     font-weight: 600;
 }
+
 
 /* =========================================================
    APPROACH
@@ -983,53 +1610,97 @@ button:focus-visible,
 
 .approach-heading {
     max-width: 640px;
+
     margin-bottom: 56px;
 }
 
+
 .approach-heading h2 {
     font-size: clamp(30px, 3.6vw, 42px);
+
     margin-bottom: 16px;
 }
+
 
 .approach-heading h2 span {
     color: var(--gold);
 }
 
+
 .approach-heading p {
     color: var(--ink-soft);
+
     font-size: 15.5px;
 }
 
+
 .approach-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 32px;
 }
 
+
 .approach-item {
+    position: relative;
+
     border-top: 2px solid var(--ink);
+
     padding-top: 22px;
 }
 
+
+/* tiny geometric marker */
+
+.approach-item::before {
+    content: "";
+
+    position: absolute;
+
+    top: -5px;
+    left: 0;
+
+    width: 9px;
+    height: 9px;
+
+    background: var(--gold);
+
+    transform: rotate(45deg);
+}
+
+
 .approach-item span {
     display: block;
+
     font-family: var(--font-display);
+
     font-weight: 700;
+
     color: var(--gold);
+
     font-size: 13px;
+
     letter-spacing: 0.1em;
+
     margin-bottom: 14px;
 }
 
+
 .approach-item h3 {
     font-size: 20px;
+
     margin-bottom: 10px;
 }
 
+
 .approach-item p {
     color: var(--ink-soft);
+
     font-size: 14.5px;
 }
+
 
 /* =========================================================
    GALLERY
@@ -1037,166 +1708,296 @@ button:focus-visible,
 
 .training-gallery {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     grid-template-rows: auto auto;
+
     gap: 20px;
 }
 
-/* Two equal portrait photos, side by side */
+
 .training-gallery-main {
     grid-column: 1;
+
     grid-row: 1;
+
     position: relative;
+
     border-radius: var(--radius);
+
     overflow: hidden;
+
     aspect-ratio: 3 / 4;
 }
+
 
 .training-gallery-side {
     grid-column: 2;
+
     grid-row: 1;
+
     position: relative;
+
     border-radius: var(--radius);
+
     overflow: hidden;
+
     aspect-ratio: 3 / 4;
 }
 
-/* Landscape photo spanning the full width of both photos above */
+
 .training-gallery-small {
     grid-column: 1 / -1;
+
     grid-row: 2;
+
     position: relative;
+
     border-radius: var(--radius);
+
     overflow: hidden;
+
     aspect-ratio: 16 / 9;
 }
 
+
 .training-gallery img {
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
 }
+
 
 .gallery-overlay,
 .side-caption,
 .small-caption {
     position: absolute;
+
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(0deg, rgba(23, 20, 15, 0.85) 0%, rgba(23, 20, 15, 0) 70%);
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(23, 20, 15, 0.85) 0%,
+            rgba(23, 20, 15, 0) 70%
+        );
+
     padding: 26px 22px 18px;
+
     color: var(--cream-text);
 }
+
 
 .gallery-caption,
 .side-caption,
 .small-caption {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 }
+
 
 .gallery-caption span,
 .side-caption span,
 .small-caption span {
     font-family: var(--font-display);
+
     font-weight: 700;
+
     color: var(--gold2);
+
     font-size: 13px;
 }
+
 
 .gallery-caption strong,
 .side-caption strong,
 .small-caption strong {
     display: block;
+
     font-family: var(--font-display);
+
     font-size: 15px;
 }
+
 
 .gallery-caption small,
 .side-caption small {
     display: block;
+
     font-size: 12px;
+
     color: rgba(250, 246, 239, 0.75);
+
     margin-top: 2px;
 }
 
+
 .gallery-statement {
     margin-top: 50px;
+
     display: flex;
+
     align-items: center;
+
     gap: 20px;
 }
 
+
 .gallery-line {
     flex: 0 0 60px;
+
     height: 2px;
+
     background: var(--gold);
 }
 
+
 .gallery-statement p {
     font-size: 17px;
+
     color: var(--ink-soft);
 }
+
 
 .gallery-statement strong {
     color: var(--ink);
 }
+
 
 /* =========================================================
    WHO WE SERVE / AUDIENCE
    ========================================================= */
 
 .audience {
+    position: relative;
+
     background: var(--ink);
+
     color: var(--cream-text);
+
+    overflow: hidden;
 }
+
+
+/* African pattern inside dark section */
+
+.audience::before {
+    content: "";
+
+    position: absolute;
+
+    right: -50px;
+    top: 50%;
+
+    width: 260px;
+    height: 260px;
+
+    transform: translateY(-50%);
+
+    opacity: 0.08;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 43%,
+            var(--gold2) 44%,
+            var(--gold2) 52%,
+            transparent 53%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 43%,
+            var(--gold2) 44%,
+            var(--gold2) 52%,
+            transparent 53%
+        );
+
+    background-size: 38px 38px;
+
+    pointer-events: none;
+}
+
 
 .audience-inner {
     max-width: var(--container);
+
     margin: 0 auto;
+
     padding: 100px 8vw;
+
     text-align: center;
+
+    position: relative;
+
+    z-index: 1;
 }
+
 
 .audience-inner .eyebrow {
     color: var(--gold2);
 }
 
+
 .audience-inner h2 {
     color: var(--cream-text);
+
     font-size: clamp(30px, 4vw, 44px);
+
     max-width: 780px;
+
     margin: 0 auto 20px;
 }
+
 
 .audience-inner h2 span {
     color: var(--gold2);
 }
 
+
 .audience-inner > p {
     max-width: 560px;
+
     margin: 0 auto 44px;
+
     color: rgba(250, 246, 239, 0.72);
+
     font-size: 15.5px;
 }
 
+
 .audience-list {
     display: flex;
+
     flex-wrap: wrap;
+
     justify-content: center;
+
     gap: 12px;
 }
 
+
 .audience-list span {
     padding: 10px 20px;
+
     border: 1px solid rgba(250, 246, 239, 0.25);
+
     border-radius: 999px;
+
     font-size: 13.5px;
+
     font-family: var(--font-display);
+
     font-weight: 600;
 }
+
 
 /* =========================================================
    CONTACT
@@ -1204,231 +2005,601 @@ button:focus-visible,
 
 .contact {
     display: grid;
+
     grid-template-columns: 1.2fr 0.8fr;
+
     gap: 60px;
+
     align-items: center;
 }
+
 
 .contact-content .eyebrow {
     color: var(--gold);
 }
 
+
 .contact-content h2 {
     font-size: clamp(30px, 4vw, 44px);
+
     margin-bottom: 18px;
 }
+
 
 .contact-content h2 span {
     color: var(--gold);
 }
 
+
 .contact-content p {
     color: var(--ink-soft);
+
     max-width: 460px;
+
     font-size: 15.5px;
+
     margin-bottom: 32px;
 }
 
+
 .contact-card {
+    position: relative;
+
     background: var(--paper-dim);
+
     border-radius: var(--radius);
+
     padding: 36px;
+
     display: flex;
+
     flex-direction: column;
+
     gap: 22px;
+
+    overflow: hidden;
 }
+
+
+/* small African corner detail */
+
+.contact-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: -15px;
+    bottom: -15px;
+
+    width: 85px;
+    height: 85px;
+
+    opacity: 0.08;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        );
+
+    background-size: 20px 20px;
+
+    pointer-events: none;
+}
+
 
 .contact-card small {
     display: block;
+
     font-family: var(--font-display);
+
     font-size: 11px;
+
     font-weight: 700;
+
     letter-spacing: 0.12em;
+
     text-transform: uppercase;
+
     color: var(--gold);
+
     margin-bottom: 6px;
 }
 
+
 .contact-card strong {
     font-size: 16px;
+
     font-weight: 600;
 }
+
 
 /* =========================================================
    FOOTER
    ========================================================= */
 
 footer {
+    position: relative;
+
     border-top: 1px solid var(--paper-line);
+
     padding: 50px 8vw 34px;
+
     max-width: var(--container);
+
     margin: 0 auto;
+
+    overflow: hidden;
 }
+
+
+/* subtle footer geometric motif */
+
+footer::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 120px;
+    height: 80px;
+
+    opacity: 0.08;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 43%,
+            var(--gold) 44%,
+            var(--gold) 52%,
+            transparent 53%
+        );
+
+    background-size: 24px 24px;
+
+    pointer-events: none;
+}
+
 
 .footer-brand {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
+
     margin-bottom: 20px;
+
+    position: relative;
+
+    z-index: 1;
 }
+
 
 .footer-brand strong {
     display: block;
+
     font-family: var(--font-display);
+
     font-size: 15px;
 }
 
+
 .footer-brand small {
     display: block;
+
     font-size: 12px;
+
     color: var(--ink-soft);
 }
+
 
 footer > p {
     color: var(--ink-soft);
+
     font-size: 14px;
+
     max-width: 380px;
+
     margin-bottom: 34px;
+
+    position: relative;
+
+    z-index: 1;
 }
+
 
 .footer-bottom {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     flex-wrap: wrap;
+
     gap: 14px;
+
     padding-top: 24px;
+
     border-top: 1px solid var(--paper-line);
+
     font-size: 13px;
+
     color: var(--ink-soft);
+
+    position: relative;
+
+    z-index: 1;
 }
+
 
 .footer-bottom div {
     display: flex;
+
     gap: 20px;
 }
 
+
 .footer-bottom a {
     font-weight: 600;
+
     color: var(--ink-soft);
+
     transition: color 0.2s ease;
 }
+
 
 .footer-bottom a:hover {
     color: var(--gold);
 }
 
+
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE — 1080px
    ========================================================= */
 
 @media (max-width: 1080px) {
+
     .hero,
     .intro-grid,
     .contact {
         grid-template-columns: 1fr;
     }
 
+
     .hero-image {
         order: -1;
     }
+
 
     .service-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
+
     .program {
         grid-template-columns: 1fr;
+
         padding: 40px;
+
         max-width: calc(100% - 12vw);
     }
+
 
     .approach-grid {
         grid-template-columns: 1fr 1fr;
     }
 }
 
+
+/* =========================================================
+   RESPONSIVE — 900px
+   ========================================================= */
+
 @media (max-width: 900px) {
+
+    /* Reduce side pattern */
+
+    body::before,
+    body::after {
+        width: 35px;
+
+        opacity: 0.08;
+    }
+
+
     .navbar {
         padding: 16px 6vw;
     }
+
 
     .menu-toggle {
         display: block;
     }
 
+
     .nav-links {
         position: absolute;
+
         top: 100%;
+
         left: 0;
         right: 0;
+
         background: var(--paper);
+
         border-bottom: 1px solid var(--paper-line);
+
         flex-direction: column;
+
         align-items: flex-start;
+
         gap: 4px;
+
         padding: 10px 6vw 20px;
+
         display: none;
     }
 
+
     .nav-links a {
         width: 100%;
+
         padding: 12px 0;
+
         border-bottom: 1px solid var(--paper-line);
     }
+
 
     .nav-links.active,
     #menuToggle[aria-expanded="true"] ~ #navLinks {
         display: flex;
     }
 
+
     .section {
         padding: 80px 6vw;
     }
 
+
     .section-heading {
         flex-direction: column;
+
         align-items: flex-start;
+
         gap: 16px;
     }
+
 
     .service-grid,
     .approach-grid {
         grid-template-columns: 1fr;
     }
 
+
     .training-gallery {
         grid-template-columns: 1fr;
+
         grid-template-rows: auto;
     }
+
 
     .training-gallery-main,
     .training-gallery-side,
     .training-gallery-small {
         grid-column: 1;
+
         grid-row: auto;
     }
-}
 
-@media (max-width: 600px) {
+
     .hero {
         padding: 60px 6vw 80px;
     }
 
+
+    .hero::before {
+        opacity: 0.05;
+    }
+
+
+    .hero-visual {
+        min-height: auto;
+
+        margin-top: 20px;
+    }
+
+
+    .hero-image {
+        min-height: auto;
+
+        margin-top: 20px;
+    }
+
+
+    .trainer-badge {
+        left: 15px;
+
+        bottom: 35px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 600px
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Almost invisible side pattern on small screens */
+
+    body::before,
+    body::after {
+        width: 18px;
+
+        opacity: 0.045;
+    }
+
+
+    .hero {
+        padding: 60px 6vw 80px;
+    }
+
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+
     .hero-buttons {
         flex-direction: column;
+
         align-items: stretch;
     }
+
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+
+    .trainer-badge {
+        position: relative;
+
+        left: auto;
+
+        bottom: auto;
+
+        width: min(245px, 80%);
+
+        margin: -55px 0 0 15px;
+    }
+
+
+    .hero-image-inner {
+        padding: 14px;
+
+        border-radius: 16px;
+    }
+
+
+    .hero-image-inner::before {
+        inset: 7px;
+
+        border-radius: 12px;
+    }
+
+
+    .hero-image-inner::after {
+        width: 45px;
+        height: 45px;
+
+        background-size: 14px 14px;
+    }
+
+
+    .program {
+        padding: 28px;
+
+        border-radius: 18px;
+
+        max-width: calc(100% - 12vw);
+    }
+
 
     .program-points {
         grid-template-columns: 1fr;
     }
 
+
     .audience-inner {
         padding: 70px 6vw;
     }
 
+
+    .audience::before {
+        opacity: 0.035;
+
+        width: 150px;
+        height: 150px;
+    }
+
+
     .contact-card {
         padding: 28px;
+    }
+
+
+    .organisations {
+        padding: 55px 0;
+    }
+
+
+    .organisation-track {
+        animation-duration: 13s;
+    }
+
+
+    .organisation-item {
+        width: 160px;
+
+        flex-basis: 160px;
+
+        height: 70px;
+
+        padding: 10px 20px;
+    }
+
+
+    .organisation-item img {
+        max-width: 115px;
+
+        max-height: 45px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 48px;
+
+        letter-spacing: -2px;
+    }
+
+
+    .hero-text {
+        font-size: 15.5px;
+    }
+
+
+    .trainer-badge {
+        width: calc(100% - 30px);
+
+        margin-left: 15px;
     }
 }
