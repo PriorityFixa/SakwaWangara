@@ -28,8 +28,6 @@ if (menuToggle && navLinks) {
     });
 
 
-    /* Close mobile menu after clicking a link */
-
     navLinks.querySelectorAll("a").forEach(link => {
 
         link.addEventListener("click", () => {
@@ -62,79 +60,191 @@ const formStatus =
 
 if (enquiryForm) {
 
-    enquiryForm.addEventListener("submit", async (event) => {
+    enquiryForm.addEventListener(
+        "submit",
+        async (event) => {
 
-        event.preventDefault();
-
-
-        /* ---------------------------------------------
-           FORM DATA
-        --------------------------------------------- */
-
-        const formData =
-            new FormData(enquiryForm);
-
-        const data = {
-
-            name:
-                formData.get("name"),
-
-            organisation:
-                formData.get("organisation"),
-
-            email:
-                formData.get("email"),
-
-            phone:
-                formData.get("phone"),
-
-            trainingProgramme:
-                formData.get("trainingProgramme"),
-
-            participants:
-                formData.get("participants"),
-
-            preferredDate:
-                formData.get("preferredDate"),
-
-            message:
-                formData.get("message")
-
-        };
+            event.preventDefault();
 
 
-        /* ---------------------------------------------
-           TEMPORARY MESSAGE
-           
-           The Cloudflare Worker URL will be added
-           in the next step.
-        --------------------------------------------- */
+            /* =============================================
+               BUTTON
+            ============================================= */
 
-        if (formStatus) {
+            const submitButton =
+                enquiryForm.querySelector(
+                    'button[type="submit"]'
+                );
 
-            formStatus.textContent =
-                "Your enquiry is being prepared...";
 
-            formStatus.className =
-                "form-status visible";
+            const originalButtonText =
+                submitButton
+                    ? submitButton.textContent
+                    : "Submit Training Enquiry";
+
+
+            if (submitButton) {
+
+                submitButton.disabled = true;
+
+                submitButton.textContent =
+                    "Sending Enquiry...";
+
+            }
+
+
+            /* =============================================
+               STATUS
+            ============================================= */
+
+            if (formStatus) {
+
+                formStatus.textContent =
+                    "Sending your training enquiry...";
+
+                formStatus.className =
+                    "form-status visible";
+
+            }
+
+
+            /* =============================================
+               COLLECT FORM DATA
+            ============================================= */
+
+            const formData =
+                new FormData(enquiryForm);
+
+
+            const data = {
+
+                name:
+                    formData.get("name"),
+
+                organisation:
+                    formData.get("organisation"),
+
+                email:
+                    formData.get("email"),
+
+                phone:
+                    formData.get("phone"),
+
+                trainingProgramme:
+                    formData.get("trainingProgramme"),
+
+                participants:
+                    formData.get("participants"),
+
+                preferredDate:
+                    formData.get("preferredDate"),
+
+                message:
+                    formData.get("message")
+
+            };
+
+
+            /* =============================================
+               CLOUDFLARE WORKER
+            ============================================= */
+
+            const WORKER_URL =
+                "https://sakwa-training-enquiries.priorityfixa.workers.dev";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        WORKER_URL,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(data)
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                /* =========================================
+                   SUCCESS
+                ========================================= */
+
+                if (
+                    response.ok &&
+                    result.success
+                ) {
+
+                    if (formStatus) {
+
+                        formStatus.textContent =
+                            "Thank you. Your training enquiry has been received. Sakwa's team will get back to you shortly.";
+
+                        formStatus.className =
+                            "form-status visible success";
+
+                    }
+
+
+                    enquiryForm.reset();
+
+
+                } else {
+
+                    throw new Error(
+                        result.message ||
+                        "Unable to submit enquiry."
+                    );
+
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "Training enquiry error:",
+                    error
+                );
+
+
+                if (formStatus) {
+
+                    formStatus.textContent =
+                        "We were unable to submit your enquiry. Please try again or contact Sakwa directly.";
+
+                    formStatus.className =
+                        "form-status visible error";
+
+                }
+
+            }
+
+
+            /* =============================================
+               RESTORE BUTTON
+            ============================================= */
+
+            if (submitButton) {
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    originalButtonText;
+
+            }
 
         }
-
-
-        /*
-         * DO NOT ADD THE CLOUDFLARE URL YET.
-         *
-         * We will connect the form to the Worker
-         * after the Worker has been created.
-         */
-
-
-        console.log(
-            "Training enquiry:",
-            data
-        );
-
-    });
+    );
 
 }
 ```
