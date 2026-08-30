@@ -2433,7 +2433,288 @@ footer > p {
 .contact-card::after {
     display: none !important;
 }
+/* =========================================================
+   CONTACT / TRAINING ENQUIRY
+========================================================= */
 
+.contact {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+    gap: 70px;
+    align-items: start;
+}
+
+
+/* =========================================================
+   CONTACT CONTENT — LEFT
+========================================================= */
+
+.contact-content {
+    width: 100%;
+    max-width: 650px;
+}
+
+.contact-content h2 {
+    margin: 18px 0 24px;
+}
+
+.contact-content > p {
+    max-width: 580px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CONTACT CARD
+========================================================= */
+
+.contact-card {
+    margin-top: 40px;
+    display: grid;
+    gap: 24px;
+}
+
+.contact-card > div {
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.contact-card small {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.contact-card strong {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   TRAINING ENQUIRY — RIGHT
+========================================================= */
+
+.training-enquiry {
+    width: 100%;
+    padding: 42px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-sizing: border-box;
+}
+
+.form-heading {
+    margin-bottom: 30px;
+}
+
+.form-heading h3 {
+    margin: 12px 0 10px;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.1;
+}
+
+.form-heading p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.enquiry-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+.form-group label {
+    margin-bottom: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.form-group label span {
+    color: #ff8a1f;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.18);
+    color: inherit;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    opacity: 0.55;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #ff8a1f;
+    background: rgba(0,0,0,0.25);
+    box-shadow: 0 0 0 3px rgba(255,138,31,0.10);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: #17140f;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.form-submit {
+    margin-top: 5px;
+}
+
+.form-submit .btn {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+}
+
+.form-note {
+    margin: 12px 0 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    opacity: 0.6;
+    text-align: center;
+}
+
+
+/* =========================================================
+   FORM STATUS
+========================================================= */
+
+.form-status {
+    margin-top: 18px;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.form-status.success {
+    padding: 14px 16px;
+    border-radius: 8px;
+    background: rgba(40, 167, 69, 0.12);
+}
+
+.form-status.error {
+    padding: 14px 16px;
+    border-radius: 8px;
+    background: rgba(220, 53, 69, 0.12);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .contact {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .contact-content {
+        max-width: 800px;
+    }
+
+    .training-enquiry {
+        max-width: 800px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .contact {
+        gap: 35px;
+    }
+
+    .training-enquiry {
+        padding: 25px 20px;
+        border-radius: 14px;
+    }
+
+    .enquiry-form {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .form-group-full {
+        grid-column: auto;
+    }
+
+    .form-heading h3 {
+        font-size: 1.8rem;
+    }
+
+}
 
 /* =========================================================
    END OF SAKWA WANGARA VERSION B
