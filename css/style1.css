@@ -1708,4 +1708,62 @@ footer > p {
     .hero h1 { font-size: 48px; letter-spacing: -2px; }
     .hero-text { font-size: 15.5px; }
     .trainer-badge { width: calc(100% - 30px); margin-left: 15px; }
+   /* =========================================================
+   CLEAN BACKGROUND — REMOVE ALL DECORATIVE PATTERNS
+   ========================================================= */
+
+/* Remove background pattern / decorative graphics */
+body {
+    background-color: var(--paper);
+    background-image: none;
+}
+
+/* HERO */
+.hero::before,
+.hero::after {
+    display: none !important;
+}
+
+/* HERO IMAGE */
+.hero-image::before,
+.hero-image-inner::after {
+    display: none !important;
+}
+
+/* ABOUT / INTRO */
+.intro-grid::after {
+    display: none !important;
+}
+
+/* SERVICE CARDS */
+.service-card::before,
+.service-card::after {
+    display: none !important;
+}
+
+/* FEATURED PROGRAM */
+.program::after {
+    display: none !important;
+}
+
+/* APPROACH */
+.approach-item::after {
+    display: none !important;
+}
+
+/* WHO WE SERVE */
+.audience::before,
+.audience::after {
+    display: none !important;
+}
+
+/* CONTACT */
+.contact::after {
+    display: none !important;
+}
+
+/* CONTACT CARD */
+.contact-card::after {
+    display: none !important;
+}
 }
