@@ -560,214 +560,66 @@ footer .brand-logo {
 
 
 /* =========================================================
-   HERO
+   HERO — RESPONSIVE FIX
    ========================================================= */
 
+/* DESKTOP */
 .hero {
     min-height: calc(100vh - 80px);
 
     display: grid;
 
-    grid-template-columns: 1fr 0.9fr;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.85fr);
 
     align-items: center;
 
-    gap: 70px;
+    gap: 60px;
 
-    max-width: 1280px;
+    width: min(1280px, calc(100% - 80px));
 
     margin: 0 auto;
 
-    padding: 50px;
+    padding: 55px 0;
 
     position: relative;
 
-    overflow: hidden;
+    overflow: visible;
 
     z-index: 1;
 }
 
 
-/* Decorative hero graphics intentionally removed */
-
-
-.hero-content,
-.hero-visual {
-    position: relative;
-
-    z-index: 2;
-}
-
-
 .hero-content {
+    min-width: 0;
+
     max-width: 650px;
 }
 
 
-.hero .eyebrow {
-    display: inline-block;
-
-    margin-bottom: 25px;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 2.5px;
-
-    color: var(--terracotta);
-}
-
-
-.hero h1 {
-    margin: 0;
-
-    font-family: "Manrope", sans-serif;
-
-    font-size: clamp(52px, 6vw, 88px);
-
-    line-height: 0.98;
-
-    letter-spacing: -3px;
-
-    font-weight: 800;
-
-    color: var(--night);
-}
-
-
-.hero h1 span {
-    color: var(--orange);
-}
-
-
-.hero-text {
-    max-width: 590px;
-
-    margin: 32px 0 35px;
-
-    font-size: 17px;
-
-    line-height: 1.75;
-
-    color: var(--ink-soft);
-}
-
-
-.hero-buttons {
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-    margin-bottom: 30px;
-}
-
-
-.hero-buttons .btn {
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 54px;
-
-    padding: 0 28px;
-
-    border-radius: 999px;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    text-decoration: none;
-
-    transition: all 0.3s ease;
-}
-
-
-.hero-buttons .btn-primary {
-    background: var(--night);
-
-    color: #fff;
-}
-
-
-.hero-buttons .btn-primary:hover {
-    background: var(--orange);
-
-    color: var(--night);
-
-    transform: translateY(-2px);
-}
-
-
-.hero-buttons .btn-outline {
-    border: 1px solid var(--paper-line);
-
-    color: var(--night);
-
-    background: transparent;
-}
-
-
-.hero-buttons .btn-outline:hover {
-    border-color: var(--orange);
-
-    color: var(--terracotta);
-
-    transform: translateY(-2px);
-}
-
-
-.hero-note {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    font-size: 13px;
-
-    color: var(--ink-soft);
-}
-
-
-.hero-note span {
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: var(--orange);
-}
-
-
-/* =========================================================
-   HERO VISUAL / HERO IMAGE
-   (matches the actual HTML markup:
-    .hero-image > .image-frame > img, .floating-card)
-   ========================================================= */
-
 .hero-visual {
     position: relative;
 
-    min-height: 620px;
+    min-height: 0;
+
+    width: 100%;
 
     display: flex;
 
     align-items: center;
 
     justify-content: center;
+
+    min-width: 0;
 }
 
 
 .hero-image {
     position: relative;
 
-    width: min(100%, 520px);
+    width: min(100%, 500px);
+
+    margin-left: auto;
+    margin-right: auto;
 
     z-index: 1;
 }
@@ -782,28 +634,11 @@ footer .brand-logo {
 
     border-radius: 22px;
 
-    padding: 22px;
+    padding: 18px;
 
     box-shadow: var(--shadow-soft);
 
     overflow: hidden;
-}
-
-
-.image-frame::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 10px;
-
-    border: 1px solid rgba(232, 150, 42, 0.35);
-
-    border-radius: 16px;
-
-    pointer-events: none;
-
-    z-index: 2;
 }
 
 
@@ -814,7 +649,7 @@ footer .brand-logo {
 
     height: auto;
 
-    max-height: 620px;
+    max-height: 590px;
 
     object-fit: contain;
 
@@ -824,73 +659,254 @@ footer .brand-logo {
 }
 
 
-.hero-accent {
-    position: absolute;
+/* =========================================================
+   HERO — MEDIUM SCREENS
+   Keep image and text side-by-side longer
+   ========================================================= */
 
-    width: 180px;
-    height: 180px;
+@media (max-width: 1100px) {
 
-    right: -55px;
-    bottom: -55px;
+    .hero {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(360px, 0.8fr);
 
-    border-radius: 50%;
+        gap: 40px;
 
-    background: rgba(232, 150, 42, 0.14);
+        width: min(100% - 60px, 1100px);
 
-    z-index: -1;
+        padding: 50px 0;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(46px, 6vw, 70px);
+
+        letter-spacing: -2.5px;
+    }
+
+
+    .hero-text {
+        max-width: 520px;
+
+        font-size: 16px;
+    }
+
+
+    .hero-visual {
+        min-height: 0;
+    }
+
+
+    .hero-image {
+        width: min(100%, 450px);
+    }
+
+
+    .image-frame {
+        padding: 15px;
+    }
+
+
+    .floating-card {
+        left: -25px;
+
+        bottom: 35px;
+
+        width: 220px;
+
+        padding: 18px 20px;
+    }
+
 }
 
 
-.floating-card {
-    position: absolute;
+/* =========================================================
+   HERO — TABLET / MOBILE
+   ========================================================= */
 
-    left: -45px;
+@media (max-width: 850px) {
 
-    bottom: 55px;
+    .hero {
+        grid-template-columns: 1fr;
 
-    width: 245px;
+        gap: 45px;
 
-    padding: 22px 24px;
+        width: 100%;
 
-    background: var(--orange);
+        padding: 60px 6vw 80px;
 
-    color: var(--night);
+        min-height: auto;
+    }
 
-    border-radius: 12px;
 
-    box-shadow:
-        0 20px 45px rgba(22, 35, 59, 0.30);
+    /*
+       IMPORTANT:
+       Do NOT use order:-1 here.
+       Text remains first, image follows naturally.
+    */
 
-    z-index: 3;
+    .hero-content {
+        max-width: 700px;
+    }
+
+
+    .hero-visual {
+        min-height: 0;
+
+        width: 100%;
+
+        margin-top: 5px;
+    }
+
+
+    .hero-image {
+        width: min(100%, 520px);
+
+        margin: 0 auto;
+    }
+
+
+    .image-frame {
+        padding: 16px;
+
+        border-radius: 18px;
+    }
+
+
+    .image-frame img {
+        max-height: none;
+    }
+
+
+    .floating-card {
+        left: 15px;
+
+        bottom: 25px;
+
+        width: 230px;
+    }
+
 }
 
 
-.floating-card strong {
-    display: block;
+/* =========================================================
+   HERO — SMALL MOBILE
+   ========================================================= */
 
-    margin-bottom: 8px;
+@media (max-width: 600px) {
 
-    font-size: 21px;
+    .hero {
+        padding: 50px 6vw 70px;
 
-    font-weight: 700;
+        gap: 35px;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(42px, 12vw, 58px);
+
+        line-height: 1;
+
+        letter-spacing: -2px;
+    }
+
+
+    .hero-text {
+        margin: 25px 0 30px;
+
+        font-size: 15.5px;
+
+        line-height: 1.7;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 10px;
+    }
+
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+
+    .hero-visual {
+        margin-top: 0;
+    }
+
+
+    .hero-image {
+        width: 100%;
+    }
+
+
+    .image-frame {
+        padding: 12px;
+
+        border-radius: 16px;
+    }
+
+
+    .image-frame::before {
+        inset: 7px;
+
+        border-radius: 11px;
+    }
+
+
+    .floating-card {
+        position: relative;
+
+        left: auto;
+
+        bottom: auto;
+
+        width: calc(100% - 30px);
+
+        margin: -35px 0 0 15px;
+
+        padding: 18px 20px;
+    }
+
 }
 
 
-.floating-card span {
-    display: block;
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
 
-    margin-bottom: 4px;
+@media (max-width: 400px) {
 
-    font-size: 13px;
+    .hero {
+        padding-left: 5vw;
 
-    line-height: 1.5;
-
-    color: rgba(22, 35, 59, 0.85);
-}
+        padding-right: 5vw;
+    }
 
 
-.floating-card span:last-child {
-    margin-bottom: 0;
+    .hero h1 {
+        font-size: 44px;
+
+        letter-spacing: -1.8px;
+    }
+
+
+    .hero-text {
+        font-size: 15px;
+    }
+
+
+    .floating-card {
+        width: calc(100% - 20px);
+
+        margin-left: 10px;
+    }
+
 }
 
 
@@ -1826,9 +1842,6 @@ footer .brand-logo {
 
 /* =========================================================
    CONTACT / TRAINING ENQUIRY
-   (single, de-duplicated definition — this is the
-   only place .contact / .contact-content / .contact-card
-   are defined)
    ========================================================= */
 
 .contact {
@@ -1836,11 +1849,20 @@ footer .brand-logo {
 
     display: grid;
 
-    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+    grid-template-columns:
+        minmax(0, 0.85fr)
+        minmax(0, 1.15fr);
 
-    gap: 70px;
+    gap: 60px;
 
     align-items: start;
+
+    width: min(
+        var(--container),
+        calc(100% - 80px)
+    );
+
+    margin: 40px auto;
 
     background: var(--night);
 
@@ -1848,18 +1870,16 @@ footer .brand-logo {
 
     border-radius: 24px;
 
-    padding: 70px 8vw;
-
-    max-width: calc(var(--container) + 16vw);
+    padding: 65px;
 }
 
-
-/* -------- CONTACT CONTENT — LEFT -------- */
 
 .contact-content {
     width: 100%;
 
-    max-width: 650px;
+    max-width: 600px;
+
+    min-width: 0;
 }
 
 
@@ -1889,7 +1909,7 @@ footer .brand-logo {
 .contact-content > p {
     color: rgba(251, 243, 231, 0.75);
 
-    max-width: 580px;
+    max-width: 560px;
 
     font-size: 15.5px;
 
@@ -1899,10 +1919,14 @@ footer .brand-logo {
 }
 
 
-/* -------- CONTACT CARD -------- */
+/* =========================================================
+   CONTACT CARD
+   ========================================================= */
 
 .contact-card {
     position: relative;
+
+    width: 100%;
 
     background: var(--night-soft);
 
@@ -1912,20 +1936,20 @@ footer .brand-logo {
 
     border-radius: var(--radius);
 
-    padding: 36px;
+    padding: 30px;
 
-    margin-top: 40px;
+    margin-top: 30px;
 
     display: grid;
 
-    gap: 24px;
+    gap: 20px;
 
     overflow: hidden;
 }
 
 
 .contact-card > div {
-    padding: 20px 0;
+    padding: 18px 0;
 
     border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -1968,12 +1992,16 @@ footer .brand-logo {
 }
 
 
-/* -------- TRAINING ENQUIRY — RIGHT -------- */
+/* =========================================================
+   TRAINING ENQUIRY FORM
+   ========================================================= */
 
 .training-enquiry {
     width: 100%;
 
-    padding: 42px;
+    min-width: 0;
+
+    padding: 38px;
 
     border-radius: 18px;
 
@@ -1986,7 +2014,7 @@ footer .brand-logo {
 
 
 .form-heading {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 
@@ -1998,7 +2026,11 @@ footer .brand-logo {
 .form-heading h3 {
     margin: 12px 0 10px;
 
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-size: clamp(
+        1.8rem,
+        3vw,
+        2.5rem
+    );
 
     line-height: 1.1;
 
@@ -2015,14 +2047,18 @@ footer .brand-logo {
 }
 
 
-/* -------- FORM GRID -------- */
+/* =========================================================
+   FORM GRID
+   ========================================================= */
 
 .enquiry-form {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
 
-    gap: 20px;
+    gap: 18px;
 }
 
 
@@ -2030,6 +2066,8 @@ footer .brand-logo {
     display: flex;
 
     flex-direction: column;
+
+    min-width: 0;
 }
 
 
@@ -2037,8 +2075,6 @@ footer .brand-logo {
     grid-column: 1 / -1;
 }
 
-
-/* -------- LABELS -------- */
 
 .form-group label {
     margin-bottom: 8px;
@@ -2056,16 +2092,20 @@ footer .brand-logo {
 
 
 .form-group label span {
-    color: #ff8a1f;
+    color: var(--orange);
 }
 
 
-/* -------- INPUTS -------- */
+/* =========================================================
+   INPUTS
+   ========================================================= */
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
+
+    min-width: 0;
 
     box-sizing: border-box;
 
@@ -2077,7 +2117,7 @@ footer .brand-logo {
 
     background: rgba(0, 0, 0, 0.18);
 
-    color: inherit;
+    color: var(--cream-text);
 
     font-family: inherit;
 
@@ -2094,29 +2134,29 @@ footer .brand-logo {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    opacity: 0.55;
+    color: rgba(251, 243, 231, 0.55);
 }
 
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #ff8a1f;
+    border-color: var(--orange);
 
     background: rgba(0, 0, 0, 0.25);
 
-    box-shadow: 0 0 0 3px rgba(255, 138, 31, 0.10);
+    box-shadow:
+        0 0 0 3px
+        rgba(255, 138, 31, 0.10);
 }
 
 
 .form-group textarea {
     resize: vertical;
 
-    min-height: 140px;
+    min-height: 130px;
 }
 
-
-/* -------- SELECT -------- */
 
 .form-group select {
     cursor: pointer;
@@ -2130,10 +2170,14 @@ footer .brand-logo {
 }
 
 
-/* -------- SUBMIT -------- */
+/* =========================================================
+   FORM SUBMIT
+   ========================================================= */
 
 .form-submit {
     margin-top: 5px;
+
+    grid-column: 1 / -1;
 }
 
 
@@ -2160,8 +2204,6 @@ footer .brand-logo {
     text-align: center;
 }
 
-
-/* -------- FORM STATUS -------- */
 
 .form-status {
     margin-top: 18px;
@@ -2193,314 +2235,51 @@ footer .brand-logo {
 
 
 /* =========================================================
-   FOOTER
+   CONTACT — MEDIUM DESKTOP / TABLET
    ========================================================= */
 
-footer {
-    position: relative;
-
-    background: var(--night);
-
-    color: var(--cream-text);
-
-    padding: 50px 8vw 34px;
-
-    max-width: 100%;
-
-    margin: 0 auto;
-
-    overflow: hidden;
-}
-
-
-footer .section,
-.footer-inner {
-    max-width: var(--container);
-
-    margin: 0 auto;
-}
-
-
-.footer-brand {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 20px;
-
-    position: relative;
-
-    z-index: 1;
-}
-
-
-.footer-brand strong {
-    display: block;
-
-    font-family: var(--font-display);
-
-    font-size: 15px;
-
-    color: var(--cream-text);
-}
-
-
-.footer-brand small {
-    display: block;
-
-    font-size: 12px;
-
-    color: rgba(251, 243, 231, 0.65);
-}
-
-
-footer > p {
-    color: rgba(251, 243, 231, 0.70);
-
-    font-size: 14px;
-
-    max-width: 380px;
-
-    margin-bottom: 34px;
-
-    position: relative;
-
-    z-index: 1;
-}
-
-
-.footer-bottom {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 14px;
-
-    padding-top: 24px;
-
-    border-top: 1px solid var(--night-line);
-
-    font-size: 13px;
-
-    color: rgba(251, 243, 231, 0.65);
-
-    position: relative;
-
-    z-index: 1;
-}
-
-
-.footer-bottom div {
-    display: flex;
-
-    gap: 20px;
-}
-
-
-.footer-bottom a {
-    font-weight: 600;
-
-    color: rgba(251, 243, 231, 0.75);
-
-    transition: color 0.2s ease;
-}
-
-
-.footer-bottom a:hover {
-    color: var(--orange2);
-}
-
-
-/* =========================================================
-   RESPONSIVE — 1080px
-   ========================================================= */
-
-@media (max-width: 1080px) {
-
-    .hero,
-    .intro-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .hero-image {
-        order: -1;
-    }
-
-
-    .service-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-
-    .program {
-        grid-template-columns: 1fr;
-
-        padding: 40px;
-
-        max-width: calc(100% - 12vw);
-    }
-
-
-    .approach-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE — 1000px
-   ========================================================= */
-
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
 
     .contact {
-        grid-template-columns: 1fr;
+        width: min(
+            calc(100% - 50px),
+            1000px
+        );
 
-        gap: 50px;
+        grid-template-columns:
+            minmax(0, 0.8fr)
+            minmax(0, 1.2fr);
+
+        gap: 35px;
+
+        padding: 45px;
     }
 
-    .contact-content {
-        max-width: 800px;
-    }
 
     .training-enquiry {
-        max-width: 800px;
+        padding: 30px;
+    }
+
+
+    .contact-card {
+        padding: 25px;
     }
 
 }
 
 
 /* =========================================================
-   RESPONSIVE — 900px
+   CONTACT — MOBILE
+   Only collapse once the screen is genuinely narrow
    ========================================================= */
 
-@media (max-width: 900px) {
-
-    .navbar {
-        padding: 16px 6vw;
-    }
-
-
-    .menu-toggle {
-        display: block;
-    }
-
-
-    .nav-links {
-        position: absolute;
-
-        top: 100%;
-
-        left: 0;
-        right: 0;
-
-        background: var(--night);
-
-        border-bottom: 2px solid var(--orange);
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 4px;
-
-        padding: 10px 6vw 20px;
-
-        display: none;
-    }
-
-
-    .nav-links a {
-        width: 100%;
-
-        padding: 12px 0;
-
-        border-bottom: 1px solid var(--night-line);
-    }
-
-
-    .nav-links.active,
-    #menuToggle[aria-expanded="true"] ~ #navLinks {
-        display: flex;
-    }
-
-
-    .section {
-        padding: 80px 6vw;
-    }
-
-
-    .section-heading {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 16px;
-    }
-
-
-    .service-grid,
-    .approach-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .training-gallery {
-        grid-template-columns: 1fr;
-
-        grid-template-rows: auto;
-    }
-
-
-    .training-gallery-main,
-    .training-gallery-side,
-    .training-gallery-small {
-        grid-column: 1;
-
-        grid-row: auto;
-    }
-
-
-    .hero {
-        padding: 60px 6vw 80px;
-    }
-
-
-    .hero-visual {
-        min-height: auto;
-
-        margin-top: 20px;
-    }
-
-
-    .hero-image {
-        min-height: auto;
-
-        margin-top: 20px;
-    }
-
-
-    .floating-card {
-        left: 15px;
-
-        bottom: 35px;
-    }
-
-
-    .audience-inner {
-        padding: 80px 6vw;
-    }
-
+@media (max-width: 850px) {
 
     .contact {
+        width: calc(100% - 12vw);
+
+        grid-template-columns: 1fr;
+
         gap: 40px;
 
         padding: 50px 6vw;
@@ -2508,18 +2287,37 @@ footer > p {
         border-radius: 18px;
     }
 
+
+    .contact-content {
+        max-width: 800px;
+    }
+
+
+    .training-enquiry {
+        width: 100%;
+
+        max-width: 800px;
+
+        padding: 30px;
+    }
+
 }
 
 
 /* =========================================================
-   RESPONSIVE — 650px
+   FORM — SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 650px) {
 
     .contact {
+        width: calc(100% - 12vw);
+
+        padding: 40px 6vw;
+
         gap: 35px;
     }
+
 
     .training-enquiry {
         padding: 25px 20px;
@@ -2527,215 +2325,31 @@ footer > p {
         border-radius: 14px;
     }
 
+
     .enquiry-form {
         grid-template-columns: 1fr;
 
         gap: 18px;
     }
 
+
     .form-group-full {
         grid-column: auto;
     }
+
+
+    .form-submit {
+        grid-column: auto;
+    }
+
 
     .form-heading h3 {
         font-size: 1.8rem;
     }
 
-}
-
-
-/* =========================================================
-   RESPONSIVE — 600px
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    .hero {
-        padding: 60px 6vw 80px;
-    }
-
-
-    .hero h1 {
-        letter-spacing: -2px;
-    }
-
-
-    .hero-buttons {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-
-    .hero-buttons .btn {
-        width: 100%;
-    }
-
-
-    .floating-card {
-        position: relative;
-
-        left: auto;
-
-        bottom: auto;
-
-        width: min(245px, 80%);
-
-        margin: -55px 0 0 15px;
-    }
-
-
-    .image-frame {
-        padding: 14px;
-
-        border-radius: 16px;
-    }
-
-
-    .image-frame::before {
-        inset: 7px;
-
-        border-radius: 12px;
-    }
-
-
-    .program {
-        padding: 28px;
-
-        border-radius: 18px;
-
-        max-width: calc(100% - 12vw);
-    }
-
-
-    .program-points {
-        grid-template-columns: 1fr;
-    }
-
-
-    .audience-inner {
-        padding: 70px 6vw;
-    }
-
 
     .contact-card {
-        padding: 28px;
+        padding: 25px;
     }
 
-
-    .contact {
-        padding: 40px 6vw;
-    }
-
-
-    .organisations {
-        padding: 55px 0;
-    }
-
-
-    .organisation-track {
-        animation-duration: 13s;
-    }
-
-
-    .organisation-item {
-        width: 160px;
-
-        flex-basis: 160px;
-
-        height: 70px;
-
-        padding: 10px 20px;
-    }
-
-
-    .organisation-item img {
-        max-width: 115px;
-
-        max-height: 45px;
-    }
-
-
-    .brand-logo {
-        height: 34px;
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL SCREENS — 400px
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-    .hero h1 {
-        font-size: 48px;
-
-        letter-spacing: -2px;
-    }
-
-
-    .hero-text {
-        font-size: 15.5px;
-    }
-
-
-    .floating-card {
-        width: calc(100% - 30px);
-
-        margin-left: 15px;
-    }
-
-
-    .image-frame {
-        padding: 12px;
-    }
-
-
-    .program {
-        padding: 24px;
-    }
-
-
-    .contact-card {
-        padding: 24px;
-    }
-
-}
-
-
-/* =========================================================
-   FINAL CLEANUP
-
-   These rules guarantee that the old decorative African
-   geometric graphics do NOT appear, regardless of viewport.
-   ========================================================= */
-
-.hero::before,
-.hero::after,
-
-.hero-image::after,
-
-.intro-grid::after,
-
-.service-card::before,
-.service-card::after,
-
-.program::after,
-
-.approach-item::after,
-
-.audience::before,
-.audience::after,
-
-.contact::after,
-
-.contact-card::after {
-    display: none !important;
-}
-
-
-/* =========================================================
-   END OF SAKWA WANGARA VERSION B
-   ========================================================= */
+}================================== */
