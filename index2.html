@@ -1240,52 +1240,43 @@
      CONTACT
 ========================================================= -->
 
+<!-- =========================================================
+     CONTACT / TRAINING ENQUIRY
+========================================================= -->
+
 <section
     class="contact section"
     id="contact">
 
-
-    <div class="contact-content">
-
-
-        <span class="eyebrow">
-
-            LET'S BUILD STRONGER LEADERS
-
-        </span>
+```
+<div class="contact-content">
 
 
-        <h2>
+    <span class="eyebrow">
 
-            Turn leadership potential
-            <span>into performance.</span>
+        LET'S BUILD STRONGER LEADERS
 
-        </h2>
-
-
-        <p>
-
-            Planning a leadership development programme,
-            executive session, team-building experience or
-            professional development workshop?
-
-            Let's discuss what your organisation needs.
-
-        </p>
+    </span>
 
 
-        <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=sakwawangara@gmail.com&su=Leadership%20Training%20Enquiry"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary">
+    <h2>
 
-            Discuss Your Training Needs
+        Turn leadership potential
+        <span>into performance.</span>
 
-        </a>
+    </h2>
 
-    </div>
 
+    <p>
+
+        Planning a leadership development programme,
+        executive session, team-building experience or
+        professional development workshop?
+
+        Complete the enquiry form and let's discuss what
+        your organisation needs.
+
+    </p>
 
 
     <div class="contact-card">
@@ -1329,10 +1320,265 @@
 
         </div>
 
+
     </div>
 
-</section>
 
+</div>
+
+
+
+<!-- =====================================================
+     TRAINING ENQUIRY FORM
+====================================================== -->
+
+<div class="training-enquiry">
+
+
+    <div class="form-heading">
+
+        <span class="eyebrow">
+            TRAINING ENQUIRY
+        </span>
+
+        <h3>
+            Request a Training Programme
+        </h3>
+
+        <p>
+            Tell us about your organisation and the training
+            support you are looking for.
+        </p>
+
+    </div>
+
+
+
+    <form
+        id="trainingEnquiryForm"
+        class="enquiry-form">
+
+
+        <!-- NAME -->
+
+        <div class="form-group">
+
+            <label for="name">
+                Name <span>*</span>
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your full name"
+                autocomplete="name"
+                required>
+
+        </div>
+
+
+
+        <!-- ORGANISATION -->
+
+        <div class="form-group">
+
+            <label for="organisation">
+                Organisation <span>*</span>
+            </label>
+
+            <input
+                type="text"
+                id="organisation"
+                name="organisation"
+                placeholder="Organisation / Company name"
+                autocomplete="organization"
+                required>
+
+        </div>
+
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+            <label for="email">
+                Email <span>*</span>
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="yourname@organisation.com"
+                autocomplete="email"
+                required>
+
+        </div>
+
+
+
+        <!-- PHONE -->
+
+        <div class="form-group">
+
+            <label for="phone">
+                Phone
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+254 ..."
+                autocomplete="tel">
+
+        </div>
+
+
+
+        <!-- TRAINING PROGRAMME -->
+
+        <div class="form-group">
+
+            <label for="trainingProgramme">
+                Training Programme <span>*</span>
+            </label>
+
+            <select
+                id="trainingProgramme"
+                name="trainingProgramme"
+                required>
+
+                <option value="">
+                    Select a programme
+                </option>
+
+                <option value="Leadership Development">
+                    Leadership Development
+                </option>
+
+                <option value="C-Suite & Executive Leadership">
+                    C-Suite & Executive Leadership
+                </option>
+
+                <option value="Team Building & Facilitation">
+                    Team Building & Facilitation
+                </option>
+
+                <option value="Customer Service Excellence">
+                    Customer Service Excellence
+                </option>
+
+                <option value="Professional Etiquette & Communication">
+                    Professional Etiquette & Communication
+                </option>
+
+                <option value="Custom / Other Programme">
+                    Custom / Other Programme
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- NUMBER OF PARTICIPANTS -->
+
+        <div class="form-group">
+
+            <label for="participants">
+                Number of Participants
+            </label>
+
+            <input
+                type="number"
+                id="participants"
+                name="participants"
+                min="1"
+                placeholder="e.g. 25">
+
+        </div>
+
+
+
+        <!-- PREFERRED DATE -->
+
+        <div class="form-group">
+
+            <label for="preferredDate">
+                Preferred Date
+            </label>
+
+            <input
+                type="date"
+                id="preferredDate"
+                name="preferredDate">
+
+        </div>
+
+
+
+        <!-- MESSAGE -->
+
+        <div class="form-group form-group-full">
+
+            <label for="message">
+                Message / Training Requirements
+            </label>
+
+            <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Tell us about your training objectives, audience, preferred format or any other requirements."></textarea>
+
+        </div>
+
+
+
+        <!-- SUBMIT -->
+
+        <div class="form-submit form-group-full">
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                Submit Training Enquiry
+
+            </button>
+
+            <p class="form-note">
+
+                Your information will be used only to respond
+                to your training enquiry.
+
+            </p>
+
+        </div>
+
+
+    </form>
+
+
+
+    <!-- FORM STATUS -->
+
+    <div
+        id="formStatus"
+        class="form-status"
+        role="status"
+        aria-live="polite">
+    </div>
+
+
+</div>
+```
+
+</section>
 
 </main>
 
