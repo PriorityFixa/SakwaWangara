@@ -746,7 +746,9 @@ footer .brand-logo {
 
 
 /* =========================================================
-   HERO VISUAL
+   HERO VISUAL / HERO IMAGE
+   (matches the actual HTML markup:
+    .hero-image > .image-frame > img, .floating-card)
    ========================================================= */
 
 .hero-visual {
@@ -771,10 +773,7 @@ footer .brand-logo {
 }
 
 
-/* Decorative image graphic removed */
-
-
-.hero-image-inner {
+.image-frame {
     position: relative;
 
     width: 100%;
@@ -791,24 +790,7 @@ footer .brand-logo {
 }
 
 
-.hero-photo {
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    max-height: 620px;
-
-    object-fit: contain;
-
-    object-position: center;
-
-    border-radius: 12px;
-}
-
-
-.hero-image-inner::before {
+.image-frame::before {
     content: "";
 
     position: absolute;
@@ -825,7 +807,21 @@ footer .brand-logo {
 }
 
 
-/* Decorative corner graphic removed */
+.image-frame img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 620px;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    border-radius: 12px;
+}
 
 
 .hero-accent {
@@ -845,7 +841,7 @@ footer .brand-logo {
 }
 
 
-.trainer-badge {
+.floating-card {
     position: absolute;
 
     left: -45px;
@@ -869,22 +865,7 @@ footer .brand-logo {
 }
 
 
-.trainer-badge-label {
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    color: var(--night-soft);
-}
-
-
-.trainer-badge strong {
+.floating-card strong {
     display: block;
 
     margin-bottom: 8px;
@@ -895,14 +876,21 @@ footer .brand-logo {
 }
 
 
-.trainer-badge span:last-child {
+.floating-card span {
     display: block;
 
-    font-size: 11px;
+    margin-bottom: 4px;
+
+    font-size: 13px;
 
     line-height: 1.5;
 
-    color: rgba(22, 35, 59, 0.75);
+    color: rgba(22, 35, 59, 0.85);
+}
+
+
+.floating-card span:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -1133,9 +1121,6 @@ footer .brand-logo {
 }
 
 
-/* Decorative intro graphic removed */
-
-
 .large-text {
     font-family: var(--font-display);
 
@@ -1200,9 +1185,6 @@ footer .brand-logo {
         box-shadow 0.25s ease,
         border-color 0.25s ease;
 }
-
-
-/* Decorative service graphics removed */
 
 
 .service-card:hover {
@@ -1333,9 +1315,6 @@ footer .brand-logo {
 
     overflow: hidden;
 }
-
-
-/* Decorative program pattern removed */
 
 
 .program-image {
@@ -1520,9 +1499,6 @@ footer .brand-logo {
 
     transform: rotate(45deg);
 }
-
-
-/* Decorative approach graphic removed */
 
 
 .approach-item span {
@@ -1766,9 +1742,6 @@ footer .brand-logo {
 }
 
 
-/* Decorative audience patterns removed */
-
-
 .audience-inner {
     max-width: var(--container);
 
@@ -1852,7 +1825,10 @@ footer .brand-logo {
 
 
 /* =========================================================
-   CONTACT
+   CONTACT / TRAINING ENQUIRY
+   (single, de-duplicated definition — this is the
+   only place .contact / .contact-content / .contact-card
+   are defined)
    ========================================================= */
 
 .contact {
@@ -1860,15 +1836,21 @@ footer .brand-logo {
 
     display: grid;
 
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
 
-    gap: 60px;
+    gap: 70px;
 
-    align-items: center;
+    align-items: start;
 }
 
 
-/* Decorative contact graphic removed */
+/* -------- CONTACT CONTENT — LEFT -------- */
+
+.contact-content {
+    width: 100%;
+
+    max-width: 650px;
+}
 
 
 .contact-content .eyebrow {
@@ -1883,7 +1865,7 @@ footer .brand-logo {
         44px
     );
 
-    margin-bottom: 18px;
+    margin: 18px 0 24px;
 }
 
 
@@ -1892,16 +1874,20 @@ footer .brand-logo {
 }
 
 
-.contact-content p {
+.contact-content > p {
     color: var(--ink-soft);
 
-    max-width: 460px;
+    max-width: 580px;
 
     font-size: 15.5px;
+
+    line-height: 1.8;
 
     margin-bottom: 32px;
 }
 
+
+/* -------- CONTACT CARD -------- */
 
 .contact-card {
     position: relative;
@@ -1914,17 +1900,28 @@ footer .brand-logo {
 
     padding: 36px;
 
-    display: flex;
+    margin-top: 40px;
 
-    flex-direction: column;
+    display: grid;
 
-    gap: 22px;
+    gap: 24px;
 
     overflow: hidden;
 }
 
 
-/* Decorative contact-card graphic removed */
+.contact-card > div {
+    padding: 20px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+.contact-card > div:first-child {
+    padding-top: 0;
+
+    border-top: none;
+}
 
 
 .contact-card small {
@@ -1942,14 +1939,242 @@ footer .brand-logo {
 
     color: var(--orange2);
 
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 
 .contact-card strong {
+    display: block;
+
     font-size: 16px;
 
     font-weight: 600;
+
+    line-height: 1.6;
+}
+
+
+/* -------- TRAINING ENQUIRY — RIGHT -------- */
+
+.training-enquiry {
+    width: 100%;
+
+    padding: 42px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-sizing: border-box;
+}
+
+
+.form-heading {
+    margin-bottom: 30px;
+}
+
+
+.form-heading .eyebrow {
+    color: var(--orange2);
+}
+
+
+.form-heading h3 {
+    margin: 12px 0 10px;
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+
+    line-height: 1.1;
+
+    color: var(--cream-text);
+}
+
+
+.form-heading p {
+    margin: 0;
+
+    color: rgba(251, 243, 231, 0.72);
+
+    line-height: 1.7;
+}
+
+
+/* -------- FORM GRID -------- */
+
+.enquiry-form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+
+/* -------- LABELS -------- */
+
+.form-group label {
+    margin-bottom: 8px;
+
+    font-family: var(--font-display);
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+
+    color: var(--cream-text);
+}
+
+
+.form-group label span {
+    color: #ff8a1f;
+}
+
+
+/* -------- INPUTS -------- */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 8px;
+
+    background: rgba(0, 0, 0, 0.18);
+
+    color: inherit;
+
+    font-family: inherit;
+
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    opacity: 0.55;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #ff8a1f;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    box-shadow: 0 0 0 3px rgba(255, 138, 31, 0.10);
+}
+
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 140px;
+}
+
+
+/* -------- SELECT -------- */
+
+.form-group select {
+    cursor: pointer;
+}
+
+
+.form-group select option {
+    background: #17140f;
+
+    color: #ffffff;
+}
+
+
+/* -------- SUBMIT -------- */
+
+.form-submit {
+    margin-top: 5px;
+}
+
+
+.form-submit .btn {
+    border: none;
+
+    cursor: pointer;
+
+    width: 100%;
+
+    justify-content: center;
+}
+
+
+.form-note {
+    margin: 12px 0 0;
+
+    font-size: 0.75rem;
+
+    line-height: 1.5;
+
+    color: rgba(251, 243, 231, 0.6);
+
+    text-align: center;
+}
+
+
+/* -------- FORM STATUS -------- */
+
+.form-status {
+    margin-top: 18px;
+
+    padding: 0;
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
+}
+
+
+.form-status.success {
+    padding: 14px 16px;
+
+    border-radius: 8px;
+
+    background: rgba(40, 167, 69, 0.12);
+}
+
+
+.form-status.error {
+    padding: 14px 16px;
+
+    border-radius: 8px;
+
+    background: rgba(220, 53, 69, 0.12);
 }
 
 
@@ -2085,8 +2310,7 @@ footer > p {
 @media (max-width: 1080px) {
 
     .hero,
-    .intro-grid,
-    .contact {
+    .intro-grid {
         grid-template-columns: 1fr;
     }
 
@@ -2112,6 +2336,29 @@ footer > p {
 
     .approach-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1000px
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .contact {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .contact-content {
+        max-width: 800px;
+    }
+
+    .training-enquiry {
+        max-width: 800px;
     }
 
 }
@@ -2227,7 +2474,7 @@ footer > p {
     }
 
 
-    .trainer-badge {
+    .floating-card {
         left: 15px;
 
         bottom: 35px;
@@ -2241,6 +2488,39 @@ footer > p {
 
     .contact {
         gap: 40px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 650px
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .contact {
+        gap: 35px;
+    }
+
+    .training-enquiry {
+        padding: 25px 20px;
+
+        border-radius: 14px;
+    }
+
+    .enquiry-form {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .form-group-full {
+        grid-column: auto;
+    }
+
+    .form-heading h3 {
+        font-size: 1.8rem;
     }
 
 }
@@ -2274,7 +2554,7 @@ footer > p {
     }
 
 
-    .trainer-badge {
+    .floating-card {
         position: relative;
 
         left: auto;
@@ -2287,14 +2567,14 @@ footer > p {
     }
 
 
-    .hero-image-inner {
+    .image-frame {
         padding: 14px;
 
         border-radius: 16px;
     }
 
 
-    .hero-image-inner::before {
+    .image-frame::before {
         inset: 7px;
 
         border-radius: 12px;
@@ -2378,14 +2658,14 @@ footer > p {
     }
 
 
-    .trainer-badge {
+    .floating-card {
         width: calc(100% - 30px);
 
         margin-left: 15px;
     }
 
 
-    .hero-image-inner {
+    .image-frame {
         padding: 12px;
     }
 
@@ -2404,7 +2684,6 @@ footer > p {
 
 /* =========================================================
    FINAL CLEANUP
-   =========================================================
 
    These rules guarantee that the old decorative African
    geometric graphics do NOT appear, regardless of viewport.
@@ -2413,8 +2692,7 @@ footer > p {
 .hero::before,
 .hero::after,
 
-.hero-image::before,
-.hero-image-inner::after,
+.hero-image::after,
 
 .intro-grid::after,
 
@@ -2433,288 +2711,7 @@ footer > p {
 .contact-card::after {
     display: none !important;
 }
-/* =========================================================
-   CONTACT / TRAINING ENQUIRY
-========================================================= */
 
-.contact {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
-    gap: 70px;
-    align-items: start;
-}
-
-
-/* =========================================================
-   CONTACT CONTENT — LEFT
-========================================================= */
-
-.contact-content {
-    width: 100%;
-    max-width: 650px;
-}
-
-.contact-content h2 {
-    margin: 18px 0 24px;
-}
-
-.contact-content > p {
-    max-width: 580px;
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   CONTACT CARD
-========================================================= */
-
-.contact-card {
-    margin-top: 40px;
-    display: grid;
-    gap: 24px;
-}
-
-.contact-card > div {
-    padding: 20px 0;
-    border-top: 1px solid rgba(255,255,255,0.12);
-}
-
-.contact-card small {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.contact-card strong {
-    display: block;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-
-/* =========================================================
-   TRAINING ENQUIRY — RIGHT
-========================================================= */
-
-.training-enquiry {
-    width: 100%;
-    padding: 42px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.10);
-    box-sizing: border-box;
-}
-
-.form-heading {
-    margin-bottom: 30px;
-}
-
-.form-heading h3 {
-    margin: 12px 0 10px;
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    line-height: 1.1;
-}
-
-.form-heading p {
-    margin: 0;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   FORM GRID
-========================================================= */
-
-.enquiry-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group-full {
-    grid-column: 1 / -1;
-}
-
-
-/* =========================================================
-   LABELS
-========================================================= */
-
-.form-group label {
-    margin-bottom: 8px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-}
-
-.form-group label span {
-    color: #ff8a1f;
-}
-
-
-/* =========================================================
-   INPUTS
-========================================================= */
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 14px 16px;
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 8px;
-    background: rgba(0,0,0,0.18);
-    color: inherit;
-    font-family: inherit;
-    font-size: 0.95rem;
-    outline: none;
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    opacity: 0.55;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: #ff8a1f;
-    background: rgba(0,0,0,0.25);
-    box-shadow: 0 0 0 3px rgba(255,138,31,0.10);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 140px;
-}
-
-
-/* =========================================================
-   SELECT
-========================================================= */
-
-.form-group select {
-    cursor: pointer;
-}
-
-.form-group select option {
-    background: #17140f;
-    color: #ffffff;
-}
-
-
-/* =========================================================
-   SUBMIT
-========================================================= */
-
-.form-submit {
-    margin-top: 5px;
-}
-
-.form-submit .btn {
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    justify-content: center;
-}
-
-.form-note {
-    margin: 12px 0 0;
-    font-size: 0.75rem;
-    line-height: 1.5;
-    opacity: 0.6;
-    text-align: center;
-}
-
-
-/* =========================================================
-   FORM STATUS
-========================================================= */
-
-.form-status {
-    margin-top: 18px;
-    padding: 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-.form-status.success {
-    padding: 14px 16px;
-    border-radius: 8px;
-    background: rgba(40, 167, 69, 0.12);
-}
-
-.form-status.error {
-    padding: 14px 16px;
-    border-radius: 8px;
-    background: rgba(220, 53, 69, 0.12);
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-
-    .contact {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .contact-content {
-        max-width: 800px;
-    }
-
-    .training-enquiry {
-        max-width: 800px;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 650px) {
-
-    .contact {
-        gap: 35px;
-    }
-
-    .training-enquiry {
-        padding: 25px 20px;
-        border-radius: 14px;
-    }
-
-    .enquiry-form {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .form-group-full {
-        grid-column: auto;
-    }
-
-    .form-heading h3 {
-        font-size: 1.8rem;
-    }
-
-}
 
 /* =========================================================
    END OF SAKWA WANGARA VERSION B
