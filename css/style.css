@@ -1841,6 +1841,16 @@ footer .brand-logo {
     gap: 70px;
 
     align-items: start;
+
+    background: var(--night);
+
+    color: var(--cream-text);
+
+    border-radius: 24px;
+
+    padding: 70px 8vw;
+
+    max-width: calc(var(--container) + 16vw);
 }
 
 
@@ -1854,7 +1864,7 @@ footer .brand-logo {
 
 
 .contact-content .eyebrow {
-    color: var(--terracotta);
+    color: var(--orange2);
 }
 
 
@@ -1866,16 +1876,18 @@ footer .brand-logo {
     );
 
     margin: 18px 0 24px;
+
+    color: var(--cream-text);
 }
 
 
 .contact-content h2 span {
-    color: var(--orange);
+    color: var(--orange2);
 }
 
 
 .contact-content > p {
-    color: var(--ink-soft);
+    color: rgba(251, 243, 231, 0.75);
 
     max-width: 580px;
 
@@ -1892,7 +1904,9 @@ footer .brand-logo {
 .contact-card {
     position: relative;
 
-    background: var(--night);
+    background: var(--night-soft);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
     color: var(--cream-text);
 
@@ -2488,6 +2502,10 @@ footer > p {
 
     .contact {
         gap: 40px;
+
+        padding: 50px 6vw;
+
+        border-radius: 18px;
     }
 
 }
@@ -2602,6 +2620,11 @@ footer > p {
 
     .contact-card {
         padding: 28px;
+    }
+
+
+    .contact {
+        padding: 40px 6vw;
     }
 
 
