@@ -1395,3 +1395,98 @@ p {
     }
 
 }
+/* =========================================================
+   DYNAMIC TRAINING PHOTO GRID
+   (drop-in replacement for the hardcoded gallery-portraits /
+   gallery-landscape blocks — same visual language, any count)
+========================================================= */
+
+.event-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.event-photo-grid .gallery-photo {
+    height: 380px;
+}
+
+
+/* =========================================================
+   RECENT ENGAGEMENTS
+   (same tile language as .service-grid, applied to events)
+========================================================= */
+
+.engagements {
+    background: var(--dark);
+}
+
+.engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+
+.engagement-card {
+    padding: 35px;
+    background: var(--dark-2);
+    transition: background 0.2s ease;
+}
+
+.engagement-card:hover {
+    background: #201d17;
+}
+
+.engagement-meta {
+    display: block;
+    margin-bottom: 24px;
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.engagement-card h3 {
+    max-width: 310px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: var(--cream);
+    line-height: 1.2;
+}
+
+.engagement-card p {
+    max-width: 370px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.engagement-quote {
+    margin-top: 18px;
+    padding-left: 14px;
+    border-left: 2px solid var(--gold);
+    color: var(--cream-2);
+    font-size: 13px;
+    font-style: italic;
+}
+
+@media (max-width: 1000px) {
+    .engagement-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .event-photo-grid .gallery-photo {
+        height: 300px;
+    }
+
+    .engagement-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .engagement-card {
+        padding: 30px;
+    }
+}
