@@ -1401,30 +1401,22 @@ p {
    gallery-landscape blocks — same visual language, any count)
 ========================================================= */
 
-/*.event-photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-} */
-
-.event-photo-grid .gallery-photo {
-    height: 380px;
-}
 .event-photo-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
- 
+
 .event-photo-grid .gallery-photo {
     flex: 0 1 340px;
     min-width: 280px;
 }
- 
+
 .event-photo-grid .gallery-photo {
     height: 380px;
 }
+
 
 /* =========================================================
    RECENT ENGAGEMENTS
@@ -1476,6 +1468,16 @@ p {
     line-height: 1.7;
 }
 
+.engagement-outcome {
+    margin-top: 14px;
+    color: var(--cream-2);
+}
+
+.engagement-outcome strong {
+    color: var(--gold-light);
+    font-weight: 700;
+}
+
 .engagement-quote {
     margin-top: 18px;
     padding-left: 14px;
@@ -1483,6 +1485,128 @@ p {
     color: var(--cream-2);
     font-size: 13px;
     font-style: italic;
+}
+
+.engagement-photos-link {
+    display: inline-block;
+    margin-top: 20px;
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.engagement-photos-link:hover {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   GALLERY PHOTO AS BUTTON (reset native button styles so it
+   looks identical to the old plain <figure> version)
+========================================================= */
+
+.gallery-photo-button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: var(--dark-3);
+    text-align: left;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11, 10, 8, 0.94);
+}
+
+.lightbox-overlay.open {
+    display: flex;
+}
+
+.lightbox-image {
+    max-width: min(86vw, 1000px);
+    max-height: 78vh;
+    object-fit: contain;
+    border: 1px solid rgba(197, 154, 74, 0.35);
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--cream-2);
+    font-size: 13px;
+    letter-spacing: 0.3px;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    background: none;
+    border: 0;
+    color: var(--cream);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    color: var(--gold-light);
+}
+
+.lightbox-close {
+    top: 24px;
+    right: 30px;
+    font-size: 34px;
+    line-height: 1;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 48px;
+    line-height: 1;
+    padding: 10px 16px;
+}
+
+.lightbox-prev {
+    left: 12px;
+}
+
+.lightbox-next {
+    right: 12px;
+}
+
+@media (max-width: 760px) {
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 34px;
+        padding: 8px 10px;
+    }
+
+    .lightbox-close {
+        top: 14px;
+        right: 16px;
+    }
 }
 
 @media (max-width: 1000px) {
