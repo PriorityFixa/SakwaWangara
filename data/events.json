@@ -78,5 +78,45 @@
       "images/events/2026-06-helb-customer-service-05.jpg",
       "images/events/2026-06-helb-customer-service-06.jpg"
     ]
+  },
+  {
+    "id": "2026-06-helb-customer-service",
+    "date": "2026-06-05",
+    "client": "KAREN",
+    "type": "Customer Service Excellence",
+    "location": "Nairobi",
+    "label": "Serving Under Pressure",
+    "participants": "40 Frontline Staff",
+    "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
+    "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
+    "quote": "",
+    "images": [
+      "images/events/2026-06-helb-customer-service-01.jpg",
+      "images/events/2026-06-helb-customer-service-02.jpg",
+      "images/events/2026-06-helb-customer-service-03.jpg",
+      "images/events/2026-06-helb-customer-service-04.jpg",
+      "images/events/2026-06-helb-customer-service-05.jpg",
+      "images/events/2026-06-helb-customer-service-06.jpg"
+    ]
+  },
+  {
+    "id": "2026-06-helb-customer-service",
+    "date": "2026-06-05",
+    "client": "YFC",
+    "type": "Customer Service Excellence",
+    "location": "Nairobi",
+    "label": "Serving Under Pressure",
+    "participants": "40 Frontline Staff",
+    "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
+    "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
+    "quote": "",
+    "images": [
+      "images/events/2026-06-helb-customer-service-01.jpg",
+      "images/events/2026-06-helb-customer-service-02.jpg",
+      "images/events/2026-06-helb-customer-service-03.jpg",
+      "images/events/2026-06-helb-customer-service-04.jpg",
+      "images/events/2026-06-helb-customer-service-05.jpg",
+      "images/events/2026-06-helb-customer-service-06.jpg"
+    ]
   }
 ]
