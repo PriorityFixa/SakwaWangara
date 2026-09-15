@@ -1,0 +1,35 @@
+[
+  {
+    "id": "2026-09-acme-leadership",
+    "date": "2026-09-10",
+    "client": "Acme Logistics",
+    "type": "Leadership Workshop",
+    "location": "Nairobi",
+    "label": "Building Accountability",
+    "blurb": "A half-day workshop with Acme's mid-level managers focused on giving feedback under pressure and aligning teams around shared decisions.",
+    "quote": "",
+    "image": "images/events/2026-09-acme-leadership-01.jpg"
+  },
+  {
+    "id": "2026-08-globex-keynote",
+    "date": "2026-08-22",
+    "client": "Globex Corp",
+    "type": "Executive Keynote",
+    "location": "Mombasa",
+    "label": "Leading Remote Teams",
+    "blurb": "Opening keynote for Globex's annual sales conference on building trust and accountability across distributed teams.",
+    "quote": "Best opener we have had in three years.",
+    "image": "images/events/2026-08-globex-keynote-01.jpg"
+  },
+  {
+    "id": "2026-07-somo-teambuilding",
+    "date": "2026-07-14",
+    "client": "SOMO",
+    "type": "Team Building",
+    "location": "Naivasha",
+    "label": "Experiential Learning",
+    "blurb": "A full-day experiential programme for SOMO's regional team, built around collaborative problem-solving and structured reflection.",
+    "quote": "",
+    "image": "images/events/2026-07-somo-teambuilding-01.jpg"
+  }
+]
