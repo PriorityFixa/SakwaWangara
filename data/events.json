@@ -8,7 +8,7 @@
     "label": "Building Accountability",
     "blurb": "A half-day workshop with Acme's mid-level managers focused on giving feedback under pressure and aligning teams around shared decisions.",
     "quote": "",
-    "image": "images/events/2026-09-acme-leadership-01.jpg"
+    "image": "images/events/train.jpg"
   },
   {
     "id": "2026-08-globex-keynote",
@@ -19,7 +19,7 @@
     "label": "Leading Remote Teams",
     "blurb": "Opening keynote for Globex's annual sales conference on building trust and accountability across distributed teams.",
     "quote": "Best opener we have had in three years.",
-    "image": "images/events/2026-08-globex-keynote-01.jpg"
+    "image": "images/events/train.jpg"
   },
   {
     "id": "2026-07-somo-teambuilding",
@@ -30,6 +30,6 @@
     "label": "Experiential Learning",
     "blurb": "A full-day experiential programme for SOMO's regional team, built around collaborative problem-solving and structured reflection.",
     "quote": "",
-    "image": "images/events/2026-07-somo-teambuilding-01.jpg"
+    "image": "images/events/train.jpg"
   }
 ]
