@@ -1401,16 +1401,30 @@ p {
    gallery-landscape blocks — same visual language, any count)
 ========================================================= */
 
-.event-photo-grid {
+/*.event-photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-}
+} */
 
 .event-photo-grid .gallery-photo {
     height: 380px;
 }
-
+.event-photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+ 
+.event-photo-grid .gallery-photo {
+    flex: 0 1 340px;
+    min-width: 280px;
+}
+ 
+.event-photo-grid .gallery-photo {
+    height: 380px;
+}
 
 /* =========================================================
    RECENT ENGAGEMENTS
