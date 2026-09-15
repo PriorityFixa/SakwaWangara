@@ -612,7 +612,63 @@
 
 </section>
 
+<!-- =========================================================
+     1) REPLACE the two hardcoded blocks inside the existing
+        <section class="gallery" id="gallery"> ... </section>
 
+        i.e. replace everything from
+          <!-- TWO PORTRAITS -->
+        down through the end of
+          <!-- LANDSCAPE -->  ...</div>
+
+        with this single div:
+========================================================= -->
+
+<div id="event-gallery" class="event-photo-grid"></div>
+
+
+<!-- =========================================================
+     2) ADD a new section right after the gallery section
+        and before the "IMPACT STATISTICS" section.
+========================================================= -->
+
+<section class="section engagements" id="engagements">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="label">
+                    04B / RECENT ENGAGEMENTS
+                </span>
+
+                <h2>
+                    Recent work with
+                    <span>organisations across the region.</span>
+                </h2>
+            </div>
+
+            <p>
+                A running record of leadership, team building and
+                professional development programmes recently delivered.
+            </p>
+
+        </div>
+
+        <div id="event-list" class="engagement-grid"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     3) Before the closing </body> tag, alongside the existing
+        <script src="js/main.js"></script>, add:
+========================================================= -->
+
+<script src="js/events.js" defer></script>
 <!-- =========================================================
      TRAINING IN ACTION / PORTFOLIO
 ========================================================= -->
