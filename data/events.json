@@ -6,9 +6,18 @@
     "type": "Leadership Workshop",
     "location": "Nairobi",
     "label": "Building Accountability",
+    "participants": "50+ Managers",
     "blurb": "A half-day workshop with Acme's mid-level managers focused on giving feedback under pressure and aligning teams around shared decisions.",
+    "outcome": "Managers reported clearer decision-making and stronger cross-team accountability within two weeks of the session.",
     "quote": "",
-    "image": "images/events/train.jpg"
+    "images": [
+      "images/events/2026-09-acme-leadership-01.jpg",
+      "images/events/2026-09-acme-leadership-02.jpg",
+      "images/events/2026-09-acme-leadership-03.jpg",
+      "images/events/2026-09-acme-leadership-04.jpg",
+      "images/events/2026-09-acme-leadership-05.jpg",
+      "images/events/2026-09-acme-leadership-06.jpg"
+    ]
   },
   {
     "id": "2026-08-globex-keynote",
@@ -17,9 +26,18 @@
     "type": "Executive Keynote",
     "location": "Mombasa",
     "label": "Leading Remote Teams",
+    "participants": "120 Delegates",
     "blurb": "Opening keynote for Globex's annual sales conference on building trust and accountability across distributed teams.",
+    "outcome": "Set the tone for a three-day conference; requested back for next year's opening session.",
     "quote": "Best opener we have had in three years.",
-    "image": "images/events/train.jpg"
+    "images": [
+      "images/events/2026-08-globex-keynote-01.jpg",
+      "images/events/2026-08-globex-keynote-02.jpg",
+      "images/events/2026-08-globex-keynote-03.jpg",
+      "images/events/2026-08-globex-keynote-04.jpg",
+      "images/events/2026-08-globex-keynote-05.jpg",
+      "images/events/2026-08-globex-keynote-06.jpg"
+    ]
   },
   {
     "id": "2026-07-somo-teambuilding",
@@ -28,8 +46,37 @@
     "type": "Team Building",
     "location": "Naivasha",
     "label": "Experiential Learning",
+    "participants": "32 Staff",
     "blurb": "A full-day experiential programme for SOMO's regional team, built around collaborative problem-solving and structured reflection.",
+    "outcome": "Team identified three concrete process changes, adopted the following month.",
     "quote": "",
-    "image": "images/events/train.jpg"
+    "images": [
+      "images/events/2026-07-somo-teambuilding-01.jpg",
+      "images/events/2026-07-somo-teambuilding-02.jpg",
+      "images/events/2026-07-somo-teambuilding-03.jpg",
+      "images/events/2026-07-somo-teambuilding-04.jpg",
+      "images/events/2026-07-somo-teambuilding-05.jpg",
+      "images/events/2026-07-somo-teambuilding-06.jpg"
+    ]
+  },
+  {
+    "id": "2026-06-helb-customer-service",
+    "date": "2026-06-05",
+    "client": "HELB",
+    "type": "Customer Service Excellence",
+    "location": "Nairobi",
+    "label": "Serving Under Pressure",
+    "participants": "40 Frontline Staff",
+    "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
+    "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
+    "quote": "",
+    "images": [
+      "images/events/2026-06-helb-customer-service-01.jpg",
+      "images/events/2026-06-helb-customer-service-02.jpg",
+      "images/events/2026-06-helb-customer-service-03.jpg",
+      "images/events/2026-06-helb-customer-service-04.jpg",
+      "images/events/2026-06-helb-customer-service-05.jpg",
+      "images/events/2026-06-helb-customer-service-06.jpg"
+    ]
   }
 ]
