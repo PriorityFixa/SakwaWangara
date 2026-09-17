@@ -102,11 +102,11 @@
   {
     "id": "2026-06-helb-customer-service",
     "date": "2026-06-05",
-    "client": "YFC",
+    "client": "Youth For Afya - YFC",
     "type": "Networking Masterclass",
     "location": "Nairobi",
     "label": "Beyond the Handshake",
-    "participants": "20 Frontline Staff",
+    "participants": "30 Members",
     "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
     "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
     "quote": "",
@@ -118,5 +118,25 @@
       "images/events/2026-06-helb-customer-service-05.jpg",
       "images/events/2026-06-helb-customer-service-06.jpg"
     ]
-  }
+  },
+  {
+    "id": "2026-06-helb-customer-service",
+    "date": "2026-06-05",
+    "client": "LEARNLY AFRICA",
+    "type": "The Analytics Advantage",
+    "location": "Nairobi",
+    "label": "HR COFFEE CHAT",
+    "participants": "40 Frontline Staff",
+    "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
+    "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
+    "quote": "",
+    "images": [
+      "images/events/2026-06-helb-customer-service-01.jpg",
+      "images/events/2026-06-helb-customer-service-02.jpg",
+      "images/events/2026-06-helb-customer-service-03.jpg",
+      "images/events/2026-06-helb-customer-service-04.jpg",
+      "images/events/2026-06-helb-customer-service-05.jpg",
+      "images/events/2026-06-helb-customer-service-06.jpg"
+    ]
+  },
 ]
