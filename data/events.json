@@ -18,7 +18,7 @@
       "images/events/train.jpg",
       "images/events/train.jpg"
     ]
-  },
+  }, 
   {
     "id": "2026-08-globex-keynote",
     "date": "2026-08-22",
@@ -31,13 +31,11 @@
     "outcome": "Set the tone for a three-day conference; requested back for next year's opening session.",
     "quote": "Best opener we have had in three years.",
     "images": [
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg"
-    ]
+      "images/events/karen/Karen11A.jpeg",
+      "images/events/karen/Karen11.jpeg", 
+      "images/events/karen/Karen12.jpeg",
+      "images/events/karen/Karen13.jpeg"
+      ]
   },
   {
     "id": "2026-07-somo-teambuilding",
@@ -51,12 +49,12 @@
     "outcome": "Team identified three concrete process changes, adopted the following month.",
     "quote": "",
     "images": [
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/2026-07-somo-teambuilding-05.jpg",
-      "images/events/2026-07-somo-teambuilding-06.jpg"
+      "images/events/karen/Karen21.jpeg",
+      "images/events/karen/Karen22.jpeg",
+      "images/events/karen/Karen23.jpeg",
+      "images/events/karen/Karen24.jpeg",
+      "images/events/karen/Karen25.jpeg",
+      "images/events/karen/Karen26.jpeg"
     ]
   },
   {
