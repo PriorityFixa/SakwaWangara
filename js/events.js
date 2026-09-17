@@ -1,165 +1,786 @@
+```javascript
 /**
- * events.js
- * Loads data/events.json and renders:
- *   1. Cover photos -> into <div id="event-gallery" class="event-photo-grid">
- *      (click a cover photo to open a lightbox with that event's full set)
- *   2. Engagement cards -> into <div id="event-list" class="engagement-grid">
+ * ============================================================
+ * SAKWA WANGARA — EVENTS
+ * ============================================================
  *
- * To add a new event with its 6 photos: add one object to events.json
- * with an "images" array of 6 paths, and drop the files in images/events/.
- * No HTML editing needed.
+ * Loads:
+ *   data/events.json
+ *
+ * Renders:
+ *   1. Training in Action gallery
+ *      -> #event-gallery
+ *
+ *   2. Recent Engagements
+ *      -> #event-list
+ *
+ * Also provides:
+ *   - Photo lightbox
+ *   - Previous / next navigation
+ *   - Keyboard navigation
+ *   - Graceful handling of events without photos
+ *   - Visible error messages when events.json fails
+ * ============================================================
  */
 
 let EVENTS = [];
 let lightboxIndex = 0;
 let lightboxEventId = null;
 
+
+/* ============================================================
+   LOAD EVENTS
+============================================================ */
+
 async function loadEvents() {
-    const res = await fetch('data/events.json');
-    if (!res.ok) throw new Error('Could not load events.json');
-    return res.json();
+
+    const response = await fetch('data/events.json', {
+        cache: 'no-cache'
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            `Could not load data/events.json (${response.status})`
+        );
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+        throw new Error('events.json must contain an array of events.');
+    }
+
+    return data;
 }
+
+
+/* ============================================================
+   DATE FORMAT
+============================================================ */
 
 function formatDate(isoDate) {
-    const d = new Date(isoDate);
-    return d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+
+    if (!isoDate) return '';
+
+    const date = new Date(isoDate);
+
+    if (Number.isNaN(date.getTime())) {
+        return isoDate;
+    }
+
+    return date.toLocaleDateString('en-GB', {
+        month: 'long',
+        year: 'numeric'
+    });
 }
 
-/* ---------- Gallery (cover photos) ---------- */
+
+/* ============================================================
+   ESCAPE HTML
+============================================================ */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+        return '';
+    }
+
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+
+/* ============================================================
+   GET VALID IMAGES
+============================================================ */
+
+function getImages(event) {
+
+    if (!Array.isArray(event.images)) {
+        return [];
+    }
+
+    return event.images.filter(
+        image => typeof image === 'string' && image.trim() !== ''
+    );
+}
+
+
+/* ============================================================
+   GALLERY
+   TRAINING IN ACTION
+============================================================ */
 
 function renderGallery(events, container) {
+
     container.innerHTML = '';
 
-    events.forEach((ev, i) => {
-        const num = String(i + 1).padStart(2, '0');
+    /*
+     * Only show events that actually have photos
+     */
+    const photoEvents = events.filter(
+        event => getImages(event).length > 0
+    );
 
-        const fig = document.createElement('button');
-        fig.type = 'button';
-        fig.className = 'gallery-photo gallery-photo-button';
-        fig.setAttribute('aria-label', `View photos from ${ev.type} with ${ev.client}`);
+    if (photoEvents.length === 0) {
 
-        fig.innerHTML = `
-            <img src="${ev.images[0]}" alt="${ev.type} with ${ev.client}" loading="lazy">
-            <div class="photo-label">
-                <span>${num}</span>
-                <strong>${ev.label}</strong>
+        container.innerHTML = `
+            <div class="events-empty">
+                Training photos will appear here soon.
             </div>
         `;
 
-        fig.addEventListener('click', () => openLightbox(ev.id, 0));
-        container.appendChild(fig);
-    });
-}
+        return;
+    }
 
-/* ---------- Engagement cards ---------- */
 
-function renderEngagements(events, container) {
-    container.innerHTML = '';
+    photoEvents.forEach((event, index) => {
 
-    const sorted = [...events].sort((a, b) => new Date(b.date) - new Date(a.date));
+        const images = getImages(event);
 
-    sorted.forEach(ev => {
-        const card = document.createElement('article');
-        card.className = 'engagement-card';
+        const number = String(index + 1).padStart(2, '0');
 
-        card.innerHTML = `
-            <span class="engagement-meta">${formatDate(ev.date)} · ${ev.location}${ev.participants ? ' · ' + ev.participants : ''}</span>
-            <h3>${ev.type}<br>${ev.client}</h3>
-            <p>${ev.blurb}</p>
-            ${ev.outcome ? `<p class="engagement-outcome"><strong>Outcome:</strong> ${ev.outcome}</p>` : ''}
-            ${ev.quote ? `<p class="engagement-quote">"${ev.quote}"</p>` : ''}
-            <button type="button" class="engagement-photos-link" data-event-id="${ev.id}">
-                View photos (${ev.images.length}) →
-            </button>
+        const button = document.createElement('button');
+
+        button.type = 'button';
+        button.className = 'gallery-photo gallery-photo-button';
+
+        button.setAttribute(
+            'aria-label',
+            `View photos from ${event.type} with ${event.client}`
+        );
+
+
+        button.innerHTML = `
+            <img
+                src="${escapeHTML(images[0])}"
+                alt="${escapeHTML(event.type)} with ${escapeHTML(event.client)}"
+                loading="lazy"
+            >
+
+            <div class="photo-label">
+                <span>${number}</span>
+                <strong>${escapeHTML(event.label || event.type)}</strong>
+            </div>
         `;
 
-        card.querySelector('.engagement-photos-link')
-            .addEventListener('click', () => openLightbox(ev.id, 0));
+
+        button.addEventListener('click', () => {
+
+            openLightbox(event.id, 0);
+
+        });
+
+
+        container.appendChild(button);
+
+    });
+}
+
+
+/* ============================================================
+   RECENT ENGAGEMENTS
+============================================================ */
+
+function renderEngagements(events, container) {
+
+    container.innerHTML = '';
+
+    /*
+     * Sort newest first
+     */
+    const sortedEvents = [...events].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
+
+    if (sortedEvents.length === 0) {
+
+        container.innerHTML = `
+            <div class="events-empty">
+                No recent engagements have been added yet.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    sortedEvents.forEach(event => {
+
+        const card = document.createElement('article');
+
+        card.className = 'engagement-card';
+
+
+        const images = getImages(event);
+
+
+        /*
+         * Build optional content
+         */
+
+        const participants = event.participants
+            ? ` · ${escapeHTML(event.participants)}`
+            : '';
+
+
+        const blurb = event.blurb
+            ? `<p>${escapeHTML(event.blurb)}</p>`
+            : '';
+
+
+        const outcome = event.outcome
+            ? `
+                <p class="engagement-outcome">
+                    <strong>Outcome:</strong>
+                    ${escapeHTML(event.outcome)}
+                </p>
+              `
+            : '';
+
+
+        const quote = event.quote
+            ? `
+                <p class="engagement-quote">
+                    "${escapeHTML(event.quote)}"
+                </p>
+              `
+            : '';
+
+
+        /*
+         * If there are photos, show photo button.
+         * If there are no photos, don't create a broken
+         * lightbox button.
+         */
+
+        const photoButton = images.length > 0
+            ? `
+                <button
+                    type="button"
+                    class="engagement-photos-link"
+                    data-event-id="${escapeHTML(event.id)}"
+                >
+                    View photos (${images.length}) →
+                </button>
+              `
+            : `
+                <span class="engagement-no-photos">
+                    Photos coming soon
+                </span>
+              `;
+
+
+        /*
+         * Create card
+         */
+
+        card.innerHTML = `
+
+            <span class="engagement-meta">
+                ${escapeHTML(formatDate(event.date))}
+                ·
+                ${escapeHTML(event.location || '')}
+                ${participants}
+            </span>
+
+            <h3>
+                ${escapeHTML(event.type || 'Training Engagement')}
+                <br>
+                ${escapeHTML(event.client || '')}
+            </h3>
+
+            ${blurb}
+
+            ${outcome}
+
+            ${quote}
+
+            ${photoButton}
+
+        `;
+
+
+        /*
+         * Connect lightbox button
+         */
+
+        const photoLink = card.querySelector(
+            '.engagement-photos-link'
+        );
+
+
+        if (photoLink) {
+
+            photoLink.addEventListener('click', () => {
+
+                openLightbox(event.id, 0);
+
+            });
+
+        }
+
 
         container.appendChild(card);
+
     });
 }
 
-/* ---------- Lightbox ---------- */
+
+/* ============================================================
+   LIGHTBOX DOM
+============================================================ */
 
 function buildLightboxDom() {
-    if (document.getElementById('event-lightbox')) return;
+
+    if (document.getElementById('event-lightbox')) {
+        return;
+    }
+
 
     const overlay = document.createElement('div');
+
     overlay.id = 'event-lightbox';
     overlay.className = 'lightbox-overlay';
+
+
     overlay.innerHTML = `
-        <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
-        <button type="button" class="lightbox-prev" aria-label="Previous photo">&#8249;</button>
-        <img class="lightbox-image" src="" alt="">
-        <button type="button" class="lightbox-next" aria-label="Next photo">&#8250;</button>
+
+        <button
+            type="button"
+            class="lightbox-close"
+            aria-label="Close"
+        >
+            &times;
+        </button>
+
+        <button
+            type="button"
+            class="lightbox-prev"
+            aria-label="Previous photo"
+        >
+            &#8249;
+        </button>
+
+        <img
+            class="lightbox-image"
+            src=""
+            alt=""
+        >
+
+        <button
+            type="button"
+            class="lightbox-next"
+            aria-label="Next photo"
+        >
+            &#8250;
+        </button>
+
         <div class="lightbox-caption"></div>
+
     `;
+
+
     document.body.appendChild(overlay);
 
-    overlay.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-    overlay.querySelector('.lightbox-prev').addEventListener('click', () => stepLightbox(-1));
-    overlay.querySelector('.lightbox-next').addEventListener('click', () => stepLightbox(1));
-    overlay.addEventListener('click', e => {
-        if (e.target === overlay) closeLightbox();
+
+    /*
+     * Close button
+     */
+
+    overlay
+        .querySelector('.lightbox-close')
+        .addEventListener('click', closeLightbox);
+
+
+    /*
+     * Previous
+     */
+
+    overlay
+        .querySelector('.lightbox-prev')
+        .addEventListener('click', () => {
+
+            stepLightbox(-1);
+
+        });
+
+
+    /*
+     * Next
+     */
+
+    overlay
+        .querySelector('.lightbox-next')
+        .addEventListener('click', () => {
+
+            stepLightbox(1);
+
+        });
+
+
+    /*
+     * Click outside image
+     */
+
+    overlay.addEventListener('click', event => {
+
+        if (event.target === overlay) {
+            closeLightbox();
+        }
+
     });
 
-    document.addEventListener('keydown', e => {
-        if (!overlay.classList.contains('open')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') stepLightbox(-1);
-        if (e.key === 'ArrowRight') stepLightbox(1);
+
+    /*
+     * Keyboard controls
+     */
+
+    document.addEventListener('keydown', event => {
+
+        if (!overlay.classList.contains('open')) {
+            return;
+        }
+
+
+        if (event.key === 'Escape') {
+            closeLightbox();
+        }
+
+
+        if (event.key === 'ArrowLeft') {
+            stepLightbox(-1);
+        }
+
+
+        if (event.key === 'ArrowRight') {
+            stepLightbox(1);
+        }
+
     });
 }
 
-function openLightbox(eventId, index) {
+
+/* ============================================================
+   OPEN LIGHTBOX
+============================================================ */
+
+function openLightbox(eventId, index = 0) {
+
+    const event = EVENTS.find(
+        item => item.id === eventId
+    );
+
+
+    if (!event) {
+        console.error(
+            'Lightbox event not found:',
+            eventId
+        );
+
+        return;
+    }
+
+
+    const images = getImages(event);
+
+
+    if (images.length === 0) {
+
+        console.warn(
+            'This engagement has no photos:',
+            event.client
+        );
+
+        return;
+    }
+
+
     lightboxEventId = eventId;
     lightboxIndex = index;
-    const overlay = document.getElementById('event-lightbox');
+
+
+    const overlay =
+        document.getElementById('event-lightbox');
+
+
+    if (!overlay) {
+        return;
+    }
+
+
     overlay.classList.add('open');
+
     document.body.style.overflow = 'hidden';
+
+
     updateLightboxImage();
 }
+
+
+/* ============================================================
+   CLOSE LIGHTBOX
+============================================================ */
 
 function closeLightbox() {
-    const overlay = document.getElementById('event-lightbox');
+
+    const overlay =
+        document.getElementById('event-lightbox');
+
+
+    if (!overlay) {
+        return;
+    }
+
+
     overlay.classList.remove('open');
+
     document.body.style.overflow = '';
+
 }
 
+
+/* ============================================================
+   STEP LIGHTBOX
+============================================================ */
+
 function stepLightbox(delta) {
-    const ev = EVENTS.find(e => e.id === lightboxEventId);
-    if (!ev) return;
-    const total = ev.images.length;
-    lightboxIndex = (lightboxIndex + delta + total) % total;
+
+    const event = EVENTS.find(
+        item => item.id === lightboxEventId
+    );
+
+
+    if (!event) {
+        return;
+    }
+
+
+    const images = getImages(event);
+
+
+    if (images.length === 0) {
+        return;
+    }
+
+
+    lightboxIndex =
+        (lightboxIndex + delta + images.length)
+        % images.length;
+
+
     updateLightboxImage();
 }
 
-function updateLightboxImage() {
-    const ev = EVENTS.find(e => e.id === lightboxEventId);
-    if (!ev) return;
-    const overlay = document.getElementById('event-lightbox');
-    const img = overlay.querySelector('.lightbox-image');
-    const caption = overlay.querySelector('.lightbox-caption');
 
-    img.src = ev.images[lightboxIndex];
-    img.alt = `${ev.type} with ${ev.client}`;
-    caption.textContent = `${ev.client} — ${ev.type} · Photo ${lightboxIndex + 1} of ${ev.images.length}`;
+/* ============================================================
+   UPDATE LIGHTBOX
+============================================================ */
+
+function updateLightboxImage() {
+
+    const event = EVENTS.find(
+        item => item.id === lightboxEventId
+    );
+
+
+    if (!event) {
+        return;
+    }
+
+
+    const images = getImages(event);
+
+
+    if (images.length === 0) {
+        return;
+    }
+
+
+    const overlay =
+        document.getElementById('event-lightbox');
+
+
+    if (!overlay) {
+        return;
+    }
+
+
+    const image =
+        overlay.querySelector('.lightbox-image');
+
+
+    const caption =
+        overlay.querySelector('.lightbox-caption');
+
+
+    image.src = images[lightboxIndex];
+
+    image.alt =
+        `${event.type} with ${event.client}`;
+
+
+    caption.textContent =
+        `${event.client} — ${event.type} · Photo ${lightboxIndex + 1} of ${images.length}`;
 }
 
-/* ---------- Init ---------- */
 
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        EVENTS = await loadEvents();
-        buildLightboxDom();
+/* ============================================================
+   ERROR DISPLAY
+============================================================ */
 
-        const galleryEl = document.getElementById('event-gallery');
-        if (galleryEl) renderGallery(EVENTS, galleryEl);
+function showEventsError(message) {
 
-        const listEl = document.getElementById('event-list');
-        if (listEl) renderEngagements(EVENTS, listEl);
-    } catch (err) {
-        console.error(err);
+    const gallery =
+        document.getElementById('event-gallery');
+
+
+    const list =
+        document.getElementById('event-list');
+
+
+    const errorHTML = `
+        <div class="events-error">
+            <strong>Events could not be loaded.</strong>
+            <p>${escapeHTML(message)}</p>
+        </div>
+    `;
+
+
+    if (gallery) {
+        gallery.innerHTML = errorHTML;
     }
-});
+
+
+    if (list) {
+        list.innerHTML = errorHTML;
+    }
+
+}
+
+
+/* ============================================================
+   INITIALISE
+============================================================ */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    async () => {
+
+        console.log(
+            'Sakwa events.js loaded.'
+        );
+
+
+        try {
+
+            /*
+             * Load JSON
+             */
+
+            EVENTS = await loadEvents();
+
+
+            console.log(
+                `Loaded ${EVENTS.length} events from events.json.`
+            );
+
+
+            /*
+             * Create lightbox
+             */
+
+            buildLightboxDom();
+
+
+            /*
+             * Render gallery independently
+             */
+
+            const gallery =
+                document.getElementById('event-gallery');
+
+
+            if (gallery) {
+
+                try {
+
+                    renderGallery(
+                        EVENTS,
+                        gallery
+                    );
+
+                } catch (error) {
+
+                    console.error(
+                        'Gallery rendering error:',
+                        error
+                    );
+
+                }
+
+            }
+
+
+            /*
+             * Render Recent Engagements independently
+             */
+
+            const engagementList =
+                document.getElementById('event-list');
+
+
+            if (engagementList) {
+
+                try {
+
+                    renderEngagements(
+                        EVENTS,
+                        engagementList
+                    );
+
+                } catch (error) {
+
+                    console.error(
+                        'Engagement rendering error:',
+                        error
+                    );
+
+                    engagementList.innerHTML = `
+                        <div class="events-error">
+                            <strong>
+                                Recent engagements could not be displayed.
+                            </strong>
+                            <p>
+                                Please check the browser console for details.
+                            </p>
+                        </div>
+                    `;
+
+                }
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                'Events loading error:',
+                error
+            );
+
+
+            showEventsError(
+                error.message
+            );
+
+        }
+
+    }
+);
+```
