@@ -1,52 +1,47 @@
 [
   {
-    "id": "2026-09-acme-leadership",
+    "id": "2026-09-kenya-red-cross-leadership",
     "date": "2026-09-10",
     "client": "KENYA RED CROSS",
     "type": "Leadership Workshop for Supervisors",
     "location": "Nairobi",
     "label": "Building Accountability",
     "participants": "50+ Managers",
-    "blurb": "A half-day workshop with Acme's mid-level managers focused on giving feedback under pressure and aligning teams around shared decisions.",
+    "blurb": "A half-day workshop with Kenya Red Cross mid-level managers focused on giving feedback under pressure and aligning teams around shared decisions.",
     "outcome": "Managers reported clearer decision-making and stronger cross-team accountability within two weeks of the session.",
     "quote": "",
     "images": [
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg",
-      "images/events/train.jpg",
       "images/events/train.jpg"
     ]
-  }, 
+  },
   {
-    "id": "2026-08-globex-keynote",
+    "id": "2026-08-karen-country-club-keynote",
     "date": "2026-08-22",
     "client": "KAREN COUNTRY CLUB",
     "type": "Executive Keynote",
     "location": "Nairobi",
-    "label": "Leadership Workshop - Supervisorss",
+    "label": "Leadership Workshop for Supervisors",
     "participants": "25 Delegates",
-    "blurb": "Opening keynote for Globex's annual sales conference on building trust and accountability across distributed teams.",
-    "outcome": "Set the tone for a three-day conference; requested back for next year's opening session.",
+    "blurb": "",
+    "outcome": "",
     "quote": "Best opener we have had in three years.",
     "images": [
       "images/events/karen/Karen11A.jpeg",
-      "images/events/karen/Karen11.jpeg", 
+      "images/events/karen/Karen11.jpeg",
       "images/events/karen/Karen12.jpeg",
       "images/events/karen/Karen13.jpeg"
-      ]
+    ]
   },
   {
-    "id": "2026-07-somo-teambuilding",
+    "id": "2026-07-karen-country-club-teambuilding",
     "date": "2026-07-14",
     "client": "KAREN COUNTRY CLUB",
     "type": "Team Building",
     "location": "Naivasha",
     "label": "Leadership Workshop for Managers",
     "participants": "32 Staff",
-    "blurb": "A full-day experiential programme for SOMO's regional team, built around collaborative problem-solving and structured reflection.",
-    "outcome": "Team identified three concrete process changes, adopted the following month.",
+    "blurb": "",
+    "outcome": "",
     "quote": "",
     "images": [
       "images/events/karen/Karen21.jpeg",
@@ -78,63 +73,42 @@
     ]
   },
   {
-    "id": "2026-06-helb-customer-service",
+    "id": "2026-06-somo-customer-service",
     "date": "2026-06-05",
     "client": "SOMO",
     "type": "Customer Service Excellence",
     "location": "Nairobi",
     "label": "Serving Under Pressure",
     "participants": "40 Frontline Staff",
-    "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
-    "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
+    "blurb": "",
+    "outcome": "",
     "quote": "",
-    "images": [
-      "images/events/2026-06-helb-customer-service-01.jpg",
-      "images/events/2026-06-helb-customer-service-02.jpg",
-      "images/events/2026-06-helb-customer-service-03.jpg",
-      "images/events/2026-06-helb-customer-service-04.jpg",
-      "images/events/2026-06-helb-customer-service-05.jpg",
-      "images/events/2026-06-helb-customer-service-06.jpg"
-    ]
+    "images": []
   },
   {
-    "id": "2026-06-helb-customer-service",
+    "id": "2026-06-yfc-networking-masterclass",
     "date": "2026-06-05",
     "client": "Youth For Afya - YFC",
     "type": "Networking Masterclass",
     "location": "Nairobi",
     "label": "Beyond the Handshake",
     "participants": "30 Members",
-    "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
-    "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
+    "blurb": "",
+    "outcome": "",
     "quote": "",
-    "images": [
-      "images/events/2026-06-helb-customer-service-01.jpg",
-      "images/events/2026-06-helb-customer-service-02.jpg",
-      "images/events/2026-06-helb-customer-service-03.jpg",
-      "images/events/2026-06-helb-customer-service-04.jpg",
-      "images/events/2026-06-helb-customer-service-05.jpg",
-      "images/events/2026-06-helb-customer-service-06.jpg"
-    ]
+    "images": []
   },
   {
-    "id": "2026-06-helb-customer-service",
+    "id": "2026-06-learnly-africa-analytics",
     "date": "2026-06-05",
     "client": "LEARNLY AFRICA",
     "type": "The Analytics Advantage",
     "location": "Nairobi",
     "label": "HR COFFEE CHAT",
     "participants": "40 Frontline Staff",
-    "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
-    "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
+    "blurb": "",
+    "outcome": "",
     "quote": "",
-    "images": [
-      "images/events/2026-06-helb-customer-service-01.jpg",
-      "images/events/2026-06-helb-customer-service-02.jpg",
-      "images/events/2026-06-helb-customer-service-03.jpg",
-      "images/events/2026-06-helb-customer-service-04.jpg",
-      "images/events/2026-06-helb-customer-service-05.jpg",
-      "images/events/2026-06-helb-customer-service-06.jpg"
-    ]
-  },
+    "images": []
+  }
 ]
