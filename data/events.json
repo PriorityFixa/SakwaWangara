@@ -100,7 +100,14 @@
     "blurb": "",
     "outcome": "",
     "quote": "",
-    "images": []
+    "images": [
+      "images/events/yfa/yfa1A.jpeg",
+      "images/events//yfa/yfa1.jpeg",
+      "images/events//yfa/yfa2.jpeg",
+      "images/events//yfa/yfa3.jpeg",
+      "images/events//yfa/yfa4.jpeg"
+      
+    ]
   },
   {
     "id": "2026-06-learnly-africa-analytics",
