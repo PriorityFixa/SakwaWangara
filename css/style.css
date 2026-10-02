@@ -1628,3 +1628,76 @@ p {
         padding: 30px;
     }
 }
+.event-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Buttons default to inline, with browser padding/border/background —
+   reset all of that since this is really an image card. */
+.gallery-photo {
+    all: unset;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #1a1a1a;       /* shows as a clean dark box if the photo 404s */
+}
+
+/* This is the actual fix: force every photo into the same shape
+   regardless of its source dimensions. */
+.gallery-photo::before {
+    content: "";
+    display: block;
+    padding-top: 75%;          /* 4:3 box — change to 100% for square, 125% for 4:5 */
+}
+
+.gallery-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.photo-label {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(20, 15, 12, 0.9);
+    border-left: 3px solid var(--gold, #d4a94a);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    max-width: calc(100% - 1.5rem);
+}
+
+.photo-label span {
+    color: var(--gold, #d4a94a);
+    flex-shrink: 0;
+}
+
+.photo-label strong {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 760px) {
+    .event-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .event-photo-grid {
+        grid-template-columns: 1fr;
+    }
+}
