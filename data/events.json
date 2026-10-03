@@ -26,8 +26,8 @@
     "location": "Nairobi",
     "label": "Leadership Workshop for Supervisors",
     "participants": "25 Delegates",
-    "blurb": "",
-    "outcome": "",
+    "blurb": "An executive keynote focused on leading with clarity, communicating with purpose, and strengthening accountability across teams.",
+    "outcome": "Leaders gained practical approaches for improving engagement, alignment, and decision-making across their organisations.",
     "quote": "Best opener we have had in three years.",
     "images": [
       "images/events/karen/Karen11A.jpeg",
@@ -44,8 +44,8 @@
     "location": "Naivasha",
     "label": "Leadership Workshop for Managers",
     "participants": "32 Staff",
-    "blurb": "",
-    "outcome": "",
+    "blurb": "An executive keynote focused on leading with clarity, communicating with purpose, and strengthening accountability across teams.",
+    "outcome": "Leaders gained practical approaches for improving engagement, alignment, and decision-making across their organisations.",
     "quote": "",
     "images": [
       "images/events/karen/Karen21.jpeg",
@@ -64,8 +64,8 @@
     "location": "Nairobi",
     "label": "HR COFFEE CHAT",
     "participants": "40 Frontline Staff",
-    "blurb": "",
-    "outcome": "",
+    "blurb": "An interactive HR Coffee Chat for 40 frontline staff in Nairobi, focused on using data and everyday workplace insights to make informed decisions and improve performance.",
+    "outcome": "Participants gained practical approaches to interpreting information, identifying meaningful trends, and using data more confidently to support day-to-day decisions.",
     "quote": "",
     "images": [
       "images/events/talk/Talk6.jpeg",
@@ -75,19 +75,7 @@
       "images/events/talk/Talk1A.jpeg"
     ]
   },
-  {
-    "id": "2026-06-somo-customer-service",
-    "date": "2026-06-05",
-    "client": "SOMO",
-    "type": "Customer Service Excellence",
-    "location": "Nairobi",
-    "label": "Serving Under Pressure",
-    "participants": "40 Frontline Staff",
-    "blurb": "",
-    "outcome": "",
-    "quote": "",
-    "images": []
-  },
+ 
   {
     "id": "2026-06-yfc-networking-masterclass",
     "date": "2026-06-05",
