@@ -57,22 +57,22 @@
     ]
   },
   {
-    "id": "2026-06-helb-customer-service",
+     "id": "2026-06-learnly-africa-analytics",
     "date": "2026-06-05",
-    "client": "COFFEE CHAT",
-    "type": "Customer Service Excellence",
+    "client": "LEARNLY AFRICA",
+    "type": "The Analytics Advantage",
     "location": "Nairobi",
-    "label": "Serving Under Pressure",
+    "label": "HR COFFEE CHAT",
     "participants": "40 Frontline Staff",
-    "blurb": "A practical customer service programme for HELB's frontline team, focused on handling difficult interactions and setting clear expectations.",
-    "outcome": "Complaint escalations dropped in the following quarter, per internal service desk figures.",
+    "blurb": "",
+    "outcome": "",
     "quote": "",
     "images": [
-      "images/events/talk/talk6.jpeg",
-      "images/events/talk/talk3i.jpeg",
-      "images/events/talk/talk4.jpeg",
-      "images/events/talk/talk5i.jpeg",
-      "images/events/talk/talk1A.jpeg"
+      "images/events/talk/Talk6.jpeg",
+      "images/events/talk/Talk3i.jpeg",
+      "images/events/talk/Talk4.jpeg",
+      "images/events/talk/Talk5i.jpeg",
+      "images/events/talk/Talk1A.jpeg"
     ]
   },
   {
@@ -108,17 +108,5 @@
       
     ]
   },
-  {
-    "id": "2026-06-learnly-africa-analytics",
-    "date": "2026-06-05",
-    "client": "LEARNLY AFRICA",
-    "type": "The Analytics Advantage",
-    "location": "Nairobi",
-    "label": "HR COFFEE CHAT",
-    "participants": "40 Frontline Staff",
-    "blurb": "",
-    "outcome": "",
-    "quote": "",
-    "images": []
-  }
+  
 ]
