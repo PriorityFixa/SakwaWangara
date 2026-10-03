@@ -84,8 +84,28 @@
     "location": "Nairobi",
     "label": "Beyond the Handshake",
     "participants": "30 Members",
-    "blurb": "",
-    "outcome": "",
+    "blurb": "A practical networking masterclass for 30 members focused on moving beyond introductions to build authentic, purposeful, and lasting professional relationships.",
+    "outcome": "Participants developed greater confidence in networking, communicating their value, and turning connections into opportunities for collaboration and growth.",
+    "quote": "",
+    "images": [
+      "images/events/yfa/yfa1A.jpeg",
+      "images/events//yfa/yfa1.jpeg",
+      "images/events//yfa/yfa2.jpeg",
+      "images/events//yfa/yfa3.jpeg",
+      "images/events//yfa/yfa4.jpeg"
+      
+    ]
+  },
+   {
+    "id": "2026-06-yfc-networking-masterclass",
+    "date": "2026-06-05",
+    "client": "Youth For Afya - YFC",
+    "type": "Networking Masterclass",
+    "location": "Nairobi",
+    "label": "Beyond the Handshake",
+    "participants": "30 Members",
+    "blurb": "A practical networking masterclass for 30 members focused on moving beyond introductions to build authentic, purposeful, and lasting professional relationships.",
+    "outcome": "Participants developed greater confidence in networking, communicating their value, and turning connections into opportunities for collaboration and growth.",
     "quote": "",
     "images": [
       "images/events/yfa/yfa1A.jpeg",
