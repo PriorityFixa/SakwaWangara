@@ -1701,3 +1701,67 @@ p {
         grid-template-columns: 1fr;
     }
 }
+/* =========================================================
+   IMPACT STATS — card treatment
+   Paste this into css/style.css. No HTML changes needed —
+   it targets the .stats-grid / .stat-card classes already
+   in your index.html.
+========================================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+}
+
+.stat-card {
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(217,168,105,0.25);
+    border-radius: 12px;
+    padding: 2.25rem 1.5rem 1.75rem;
+    text-align: center;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(217,168,105,0.6);
+    background: rgba(255,255,255,0.05);
+}
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 3px;
+    background: #d9a869;
+    border-radius: 2px;
+}
+
+.stat-card h3 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    color: #d9a869;
+    margin: 0.5rem 0 0.4rem;
+    line-height: 1;
+}
+
+.stat-card p {
+    font-size: 0.9rem;
+    color: #a39c8e;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+    .stats-grid { grid-template-columns: 1fr; }
+}
